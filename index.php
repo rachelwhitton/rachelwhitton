@@ -15,3 +15,12 @@ define('WP_USE_THEMES', true);
 
 /** Loads the WordPress Environment and Template */
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+<script type="text/javascript">
+if (window.location.hostname == 'www.rachelwhitton.com' ||
+    window.location.protocol == 'http:'
+) {
+    redirect = 'https://rachelwhitton.com' + window.location.pathname
+    // bounce bounce
+    window.location = redirect
+}
+</script>
