@@ -64,26 +64,6 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
-    if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
-        $domain = 'sandbox.rachelwhitton.com';
-      }
-      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
-        $domain = 'staging.rachelwhitton.com';
-      }
-      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
-        $domain = 'rachelwhitton.com';
-      }
-    }
-    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-      $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
-      if ($_SERVER['HTTP_HOST'] == 'www.sandbox.rachelwhitton.com' ||
-          $_SERVER['HTTP_HOST'] == 'dev-rachelwhitton.pantheon.io') {
-        header('HTTP/1.0 301 Moved Permanently');
-        header('Location: http://sandbox.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-        exit();
-      }
-    }
     // Require SSL.
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
   $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
@@ -148,6 +128,12 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
                 header('Location: https://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
                 exit();
      }
+    }
+
+    /** A couple extra tweaks to help things run well on Pantheon. **/
+    if (isset($_SERVER['HTTP_HOST'])) {
+      define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+      define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
     }
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
