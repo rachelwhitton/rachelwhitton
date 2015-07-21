@@ -110,7 +110,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
       $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
       if ($_SERVER['HTTP_HOST'] == 'www.sandbox.rachelwhitton.com' ||
-          $_SERVER['HTTP_HOST'] == 'dev-yoursite.pantheon.io') {
+          $_SERVER['HTTP_HOST'] == 'dev-rachelwhitton.pantheon.io') {
         header('HTTP/1.0 301 Moved Permanently');
         header('Location: https://sandbox.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
         exit();
