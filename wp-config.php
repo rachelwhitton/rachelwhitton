@@ -86,23 +86,13 @@ else:
     }
 
     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-      $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
-      if ($_SERVER['HTTP_HOST'] == 'www.staging.rachelwhitton.com' ||
-          $_SERVER['HTTP_HOST'] == 'test-rachelwhitton.pantheon.io') {
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+      if ($_SERVER['HTTP_HOST'] == 'www.rachelwhitton.com' ||
+          $_SERVER['HTTP_HOST'] == 'live-yoursite.pantheon.io') {
         header('HTTP/1.0 301 Moved Permanently');
-        header('Location: http://staging.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+        header('Location: https://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
         exit();
       }
-    }
-     // Require HTTPS.
-     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-       $_SERVER['HTTPS'] === 'OFF') {
-     if (!isset($_SERVER['HTTP_X_SSL']) ||
-        (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
-        header('HTTP/1.0 301 Moved Permanently');
-        header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-        exit();
-        }
     }
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
