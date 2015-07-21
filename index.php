@@ -15,7 +15,7 @@ define('WP_USE_THEMES', true);
 
 /** Loads the WordPress Environment and Template */
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );
-<script type="text/javascript">
+
 if (window.location.hostname == 'www.rachelwhitton.com' ||
     window.location.hostname == 'live-rachelwhitton.pantheon.io' ||
     window.location.protocol == 'http:'
@@ -41,5 +41,3 @@ if (window.location.hostname == 'www.sandbox.rachelwhitton.com' ||
     // bounce bounce
     window.location = redirect
 }
-
-</script>
