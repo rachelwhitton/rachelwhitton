@@ -118,7 +118,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
       $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
       if ($_SERVER['HTTP_HOST'] == 'www.staging.rachelwhitton.com' ||
-          $_SERVER['HTTP_HOST'] == 'test-yoursite.pantheon.io') {
+          $_SERVER['HTTP_HOST'] == 'test-rachelwhitton.pantheon.io') {
         header('HTTP/1.0 301 Moved Permanently');
         header('Location: https://staging.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
         exit();
