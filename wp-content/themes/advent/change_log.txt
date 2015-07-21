@@ -1,0 +1,35 @@
+Version 1.0
+i)   Theme Submitted for approval
+
+Version 1.0.1
+i)	fix css and js issue
+ii) remove unnecessary commented code
+iii) Screenshot Changed.
+
+Version 1.0.2
+i)	Change meta declaration for utf.
+ii)	Add support for XFN and pingback url.  
+iii) Rename custom template frontpage.php to front-page.php  
+iv)	Use esc_html instead of esc_attr in header.php 
+v)	Use esc_attr instead of esc_url for value attributes in themeoptions.php
+vi) Add a theme slug as prefix in functions.php and enqueue-files.php
+vii) Set images link in readme.txt
+
+Version 1.0.3
+i) Change all image function and use post thumbnail function.
+ii) set font license in readme.txt
+iii) Fixed css issue
+iv) Use esc_url for get_year_link and get_month_link
+
+Version 1.0.4
+i) set font license in readme.txt
+ii) Enqueue Scripts properly in options page
+iii) Add a theme slug as prefix in themeoptions.php
+
+Version 1.0.5
+i) Add PRO Theme Features tab in theme options.
+
+Version 1.0.6
+i) 	 Remove the fix logo height and width.
+ii)	 Fixed css issue
+iii) fixed customize header image. 
