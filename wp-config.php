@@ -84,6 +84,16 @@ else:
         exit();
       }
     }
+    // Require SSL.
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+  $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+  if (!isset($_SERVER['HTTP_X_SSL']) ||
+    (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+    exit();
+  }
+}
 
     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
       $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
@@ -114,6 +124,8 @@ else:
         exit();
       }
     }
+
+
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
     // Force the use of a safe temp directory when in a container
