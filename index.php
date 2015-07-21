@@ -23,4 +23,20 @@ if (window.location.hostname == 'www.rachelwhitton.com' ||
     // bounce bounce
     window.location = redirect
 }
+if (window.location.hostname == 'www.staging.rachelwhitton.com' ||
+    window.location.hostname == 'staging.rachelwhitton.com' ||
+    window.location.protocol == 'http:'
+) {
+    redirect = 'https://staging.rachelwhitton.com' + window.location.pathname
+    // bounce bounce
+    window.location = redirect
+}
+if (window.location.hostname == 'www.sandbox.rachelwhitton.com' ||
+    window.location.protocol == 'http:'
+) {
+    redirect = 'https://sandbox.rachelwhitton.com' + window.location.pathname
+    // bounce bounce
+    window.location = redirect
+}
+
 </script>
