@@ -151,13 +151,26 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-// Require WWW Force https live env
-if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-  $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
-  if ($_SERVER['HTTP_HOST'] == 'rachelwhitton.com' ||
-      $_SERVER['HTTP_HOST'] == 'live-rachelwhitton.pantheon.io') {
-    header('HTTP/1.0 301 Moved Permanently');
-    header('Location: https://www.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-    exit();
+
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
+    $domain = 'www.sandbox.rachelwhitton.com';
   }
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
+    $domain = 'www.staging.rachelwhitton.com';
+  }
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+    $domain = 'www.rachelwhitton.com';
+  }
+  else {
+    # Fallback value for multidev or other environments.
+    # This covers environment-sitename.pantheon.io domains
+    # that are generated per environment.
+    $domain = $_SERVER['HTTP_HOST'];
+  }
+
+  # Define constants for WordPress on Pantheon.
+  define('WP_HOME', 'https://' . $domain);
+  define('WP_SITEURL', 'https://' . $domain);
+
 }
