@@ -64,30 +64,53 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
-    if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
-        $domain = 'www.sandbox.rachelwhitton.com';
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+      if ($_SERVER['HTTP_HOST'] == 'www.rachelwhitton.com' ||
+          $_SERVER['HTTP_HOST'] == 'rachelwhitton.com') {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: http://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+        exit();
       }
-      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
-        $domain = 'www.staging.rachelwhitton.com';
+    }
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+      if ($_SERVER['HTTP_HOST'] == 'live-rachelwhitton.pantheon.io' ||
+          $_SERVER['HTTP_HOST'] == 'rachelwhitton.com') {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: http://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+        exit();
       }
-      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
-        $domain = 'www.rachelwhitton.com';
+    }
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
+      if ($_SERVER['HTTP_HOST'] == 'www.sandbox.rachelwhitton.com' ||
+          $_SERVER['HTTP_HOST'] == 'dev-rachelwhitton.pantheon.io') {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: http://sandbox.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+        exit();
       }
-      else {
-        # Fallback value for multidev or other environments.
-        # This covers environment-sitename.pantheon.io domains
-        # that are generated per environment.
-        $domain = $_SERVER['HTTP_HOST'];
-      }
-
-      # Define constants for WordPress on Pantheon.
-      define('WP_HOME', 'https://' . $domain);
-      define('WP_SITEURL', 'https://' . $domain);
-
     }
 
-
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
+      if ($_SERVER['HTTP_HOST'] == 'www.staging.rachelwhitton.com' ||
+          $_SERVER['HTTP_HOST'] == 'test-rachelwhitton.pantheon.io') {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: http://staging.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+        exit();
+      }
+    }
+     // Require HTTPS.
+     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+       $_SERVER['HTTPS'] === 'OFF') {
+     if (!isset($_SERVER['HTTP_X_SSL']) ||
+        (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+        exit();
+        }
+    }
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
     // Force the use of a safe temp directory when in a container
@@ -144,27 +167,22 @@ $table_prefix = 'wp_';
  */
 define('WPLANG', '');
 
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- *
- * You may want to examine $_ENV['PANTHEON_ENVIRONMENT'] to set this to be
- * "true" in dev, but false in test and live.
- */
-if ( ! defined( 'WP_DEBUG' ) ) {
-    define('WP_DEBUG', false);
-}
+
+if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && ! defined( 'WP_DEBUG', false ) ) {
+     define('WP_DEBUG', false);
+  }
+  else
+     define( 'WP_DEBUG', true );
+
 
 /* That's all, stop editing! Happy Pressing. */
 
-/** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
 
 
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
