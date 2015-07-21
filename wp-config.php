@@ -66,13 +66,13 @@ else:
     /**#@-*/
     if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
       if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
-        $domain = 'sandbox.rachelwhitton.com';
+        $domain = 'www.sandbox.rachelwhitton.com';
       }
       if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
-        $domain = 'staging.rachelwhitton.com';
+        $domain = 'www.staging.rachelwhitton.com';
       }
       if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
-        $domain = 'rachelwhitton.com';
+        $domain = 'www.rachelwhitton.com';
       }
       else {
         # Fallback value for multidev or other environments.
