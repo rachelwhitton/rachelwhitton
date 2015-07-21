@@ -64,6 +64,29 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
+    if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
+        $domain = 'www.sandbox.rachelwhitton.com';
+      }
+      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
+        $domain = 'www.staging.rachelwhitton.com';
+      }
+      if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+        $domain = 'www.rachelwhitton.com';
+      }
+      else {
+        # Fallback value for multidev or other environments.
+        # This covers environment-sitename.pantheon.io domains
+        # that are generated per environment.
+        $domain = $_SERVER['HTTP_HOST'];
+      }
+
+      # Define constants for WordPress on Pantheon.
+      define('WP_HOME', 'https://' . $domain);
+      define('WP_SITEURL', 'https://' . $domain);
+
+    }
+
 
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
@@ -139,29 +162,6 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
-    $domain = 'www.sandbox.rachelwhitton.com';
-  }
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
-    $domain = 'www.staging.rachelwhitton.com';
-  }
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
-    $domain = 'www.rachelwhitton.com';
-  }
-  else {
-    # Fallback value for multidev or other environments.
-    # This covers environment-sitename.pantheon.io domains
-    # that are generated per environment.
-    $domain = $_SERVER['HTTP_HOST'];
-  }
-
-  # Define constants for WordPress on Pantheon.
-  define('WP_HOME', 'https://' . $domain);
-  define('WP_SITEURL', 'https://' . $domain);
-
-}
 
 
 
