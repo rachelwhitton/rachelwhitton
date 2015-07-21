@@ -124,8 +124,31 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
         exit();
       }
     }
+    if  (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+        $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
+            if($_SERVER['SERVER_PORT'] == '443'){
+                header('HTTP/1.0 301 Moved Permanently');
+                header('Location: https://sandbox.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+                exit();
+     }
+    }
 
-
+    if  (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+        $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
+            if($_SERVER['SERVER_PORT'] == '443'){
+                header('HTTP/1.0 301 Moved Permanently');
+                header('Location: https://staging.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+                exit();
+     }
+    }
+    if  (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+        $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+            if($_SERVER['SERVER_PORT'] == '443'){
+                header('HTTP/1.0 301 Moved Permanently');
+                header('Location: https://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+                exit();
+     }
+    }
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
     // Force the use of a safe temp directory when in a container
