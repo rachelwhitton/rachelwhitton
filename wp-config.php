@@ -151,7 +151,6 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
 // Require WWW Force https live env
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
   $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
@@ -159,27 +158,6 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
       $_SERVER['HTTP_HOST'] == 'live-rachelwhitton.pantheon.io') {
     header('HTTP/1.0 301 Moved Permanently');
     header('Location: https://www.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-    exit();
-  }
-}
-
-// Require WWW Force https test env
-if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-  $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
-  if ($_SERVER['HTTP_HOST'] == 'staging.rachelwhitton.com' ||
-      $_SERVER['HTTP_HOST'] == 'test-rachelwhitton.pantheon.io') {
-    header('HTTP/1.0 301 Moved Permanently');
-    header('Location: https://www.staging.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-    exit();
-  }
-}
-// Require WWW Force https dev env
-if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-  $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
-  if ($_SERVER['HTTP_HOST'] == 'sandbox.rachelwhitton.com' ||
-      $_SERVER['HTTP_HOST'] == 'dev-rachelwhitton.pantheon.io') {
-    header('HTTP/1.0 301 Moved Permanently');
-    header('Location: https://www.sandbox.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
     exit();
   }
 }
