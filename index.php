@@ -17,6 +17,7 @@ define('WP_USE_THEMES', true);
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );
 <script type="text/javascript">
 if (window.location.hostname == 'www.rachelwhitton.com' ||
+    window.location.hostname == 'live-rachelwhitton.pantheon.io' ||
     window.location.protocol == 'http:'
 ) {
     redirect = 'https://rachelwhitton.com' + window.location.pathname
@@ -25,6 +26,7 @@ if (window.location.hostname == 'www.rachelwhitton.com' ||
 }
 if (window.location.hostname == 'www.staging.rachelwhitton.com' ||
     window.location.hostname == 'staging.rachelwhitton.com' ||
+    window.location.hostname == 'test-rachelwhitton.pantheon.io' ||
     window.location.protocol == 'http:'
 ) {
     redirect = 'https://staging.rachelwhitton.com' + window.location.pathname
@@ -32,6 +34,7 @@ if (window.location.hostname == 'www.staging.rachelwhitton.com' ||
     window.location = redirect
 }
 if (window.location.hostname == 'www.sandbox.rachelwhitton.com' ||
+    window.location.hostname == 'dev-rachelwhitton.pantheon.io' ||
     window.location.protocol == 'http:'
 ) {
     redirect = 'https://sandbox.rachelwhitton.com' + window.location.pathname
