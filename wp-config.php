@@ -64,6 +64,8 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
+
+    // Redirect logic for custom domains on Dev, Test, and Live
     if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
       if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
         $domain = 'sandbox.rachelwhitton.com';
@@ -80,22 +82,18 @@ else:
         # that are generated per environment.
         $domain = $_SERVER['HTTP_HOST'];
       }
+  }
+  // Require HTTPS.
+  if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+    $_SERVER['HTTPS'] === 'ON') {
+    if (!isset($_SERVER['HTTP_X_SSL']) ||
+       (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
+       header('HTTP/1.0 301 Moved Permanently');
+       header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+       exit();
+     }
+   }
 
-      # Define constants for WordPress on Pantheon.
-      define('WP_HOME', 'https://' . $domain);
-      define('WP_SITEURL', 'https://' . $domain);
-
-    }
-    // Require HTTPS.
-    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-      $_SERVER['HTTPS'] === 'OFF') {
-      if (!isset($_SERVER['HTTP_X_SSL']) ||
-        (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
-        header('HTTP/1.0 301 Moved Permanently');
-        header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-        exit();
-      }
-    }
 
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
