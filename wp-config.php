@@ -151,13 +151,12 @@ $table_prefix = 'wp_';
  */
 define('WPLANG', '');
 
-
-if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && ! defined( 'WP_DEBUG', false ) ) {
-     define('WP_DEBUG', false);
-  }
-  else
-     define( 'WP_DEBUG', true );
-
+if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && if ( ! defined( 'WP_DEBUG', false ) ) {
+  define('WP_DEBUG', false);
+}
+else
+  define( 'WP_DEBUG', true );
+endif;
 
 /* That's all, stop editing! Happy Pressing. */
 
