@@ -94,7 +94,7 @@ else:
     }
      // Require HTTPS.
      if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-       $_SERVER['HTTPS'] === 'ON') {
+       $_SERVER['HTTPS'] === 'OFF') {
      if (!isset($_SERVER['HTTP_X_SSL']) ||
         (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
         header('HTTP/1.0 301 Moved Permanently');
@@ -159,7 +159,7 @@ $table_prefix = 'wp_';
 define('WPLANG', '');
 
 
-if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && ! defined( 'WP_DEBUG' ) ) {
+if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && ! defined( 'WP_DEBUG', false ) ) {
      define('WP_DEBUG', false);
   }
   else
