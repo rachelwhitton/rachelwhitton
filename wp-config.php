@@ -64,15 +64,24 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
-    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
       if ($_SERVER['HTTP_HOST'] == 'www.rachelwhitton.com' ||
-          $_SERVER['HTTP_HOST'] == 'live-yoursite.pantheon.io') {
+          $_SERVER['HTTP_HOST'] == 'rachelwhitton.com') {
         header('HTTP/1.0 301 Moved Permanently');
         header('Location: http://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
         exit();
       }
     }
-
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+      if ($_SERVER['HTTP_HOST'] == 'live-rachelwhitton.pantheon.io' ||
+          $_SERVER['HTTP_HOST'] == 'rachelwhitton.com') {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: http://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+        exit();
+      }
+    }
     if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
       $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
       if ($_SERVER['HTTP_HOST'] == 'www.sandbox.rachelwhitton.com' ||
