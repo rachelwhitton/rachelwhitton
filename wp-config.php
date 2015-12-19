@@ -74,6 +74,17 @@ else:
                 exit();
             }
         }
+        // Redirect all traffic to non-www. For example yoursite.com
+        if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+        $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') && $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev'){
+            if ($_SERVER['HTTP_HOST'] == 'www.rachelwhitton.com' ||
+            $_SERVER['HTTP_HOST'] == 'live-rachelwhitton.pantheon.io') {
+                header('HTTP/1.0 301 Moved Permanently');
+                header('Location: https://rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+                exit();
+            }
+        }
+
         // Don't show deprecations; useful under PHP 5.5
         error_reporting(E_ALL ^ E_DEPRECATED);
         // Force the use of a safe temp directory when in a container
@@ -131,12 +142,11 @@ $table_prefix = 'wp_';
 define('WPLANG', '');
 
 
-if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && ! defined( 'WP_DEBUG', false ) ) {
+if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && !defined( 'WP_DEBUG', false ) ) {
     define('WP_DEBUG', false);
 }
 else
 define( 'WP_DEBUG', true );
-
 
 /* That's all, stop editing! Happy Pressing. */
 
