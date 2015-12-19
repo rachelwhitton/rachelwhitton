@@ -1,33 +1,16 @@
 <?php
-
 /**
-
  * The Header for our theme.
-
- *
-
  * Displays all of the <head> section and everything up till <div id="content">
-
- *
-
- * @package zerif
-
  */
-
 ?><!DOCTYPE html>
 
 <html <?php language_attributes(); ?>>
 
 <head>
-
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title><?php wp_title( '|', true, 'right' ); ?></title>
-
 <link rel="profile" href="http://gmpg.org/xfn/11">
-
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <!--[if lt IE 9]>
@@ -35,11 +18,20 @@
 <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/ie.css" type="text/css">
 <![endif]-->
 
-<?php wp_head(); ?>
+<?php
+
+if ( ! function_exists( '_wp_render_title_tag' ) ) :
+    function zerif_old_render_title() {
+?>
+<title><?php wp_title( '-', true, 'right' ); ?></title>
+<?php
+    }
+    add_action( 'wp_head', 'zerif_old_render_title' );
+endif;
+
+wp_head(); ?>
 
 </head>
-
-
 
 <?php if(isset($_POST['scrollPosition'])): ?>
 
@@ -49,33 +41,30 @@
 
 	<body <?php body_class(); ?> >
 
-<?php endif; ?>
+<?php endif; 
 
-
-
-
-<!-- =========================
-
-   PRE LOADER
-
-============================== -->
-<?php
+	global $wp_customize;
 	
- global $wp_customize;
+	/* Preloader */
 
- if(is_front_page() && !isset( $wp_customize ) && get_option( 'show_on_front' ) != 'page' ): 
+	if(is_front_page() && !isset( $wp_customize ) && get_option( 'show_on_front' ) != 'page' ): 
  
-	$zerif_disable_preloader = get_theme_mod('zerif_disable_preloader');
-	
-	if( isset($zerif_disable_preloader) && ($zerif_disable_preloader != 1)):
-		 
-		echo '<div class="preloader">';
-			echo '<div class="status">&nbsp;</div>';
-		echo '</div>';
+		$zerif_disable_preloader = get_theme_mod('zerif_disable_preloader');
 		
-	endif;	
+		if( isset($zerif_disable_preloader) && ($zerif_disable_preloader != 1)):
+			echo '<div class="preloader">';
+				echo '<div class="status">&nbsp;</div>';
+			echo '</div>';
+		endif;	
 
-endif; ?>
+	endif; ?>
+
+
+<div id="mobilebgfix">
+	<div class="mobile-bg-fix-img-wrap">
+		<div class="mobile-bg-fix-img"></div>
+	</div>
+	<div class="mobile-bg-fix-whole-site">
 
 
 <header id="home" class="header">
@@ -97,8 +86,6 @@ endif; ?>
 				<span class="icon-bar"></span>
 
 				</button>
-
-
 
 				<?php
 
@@ -132,18 +119,14 @@ endif; ?>
 
 				?>
 
-
-
 			</div>
 
 			<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation"   id="site-navigation">
-
+				<a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'zerif-lite' ); ?></a>
 				<?php wp_nav_menu( array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'nav navbar-nav navbar-right responsive-nav main-nav-list', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
-
 			</nav>
 
 		</div>
 
 	</div>
-
 	<!-- / END TOP BAR -->
