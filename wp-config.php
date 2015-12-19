@@ -75,8 +75,7 @@ else:
             }
         }
         // Redirect all traffic to non-www. For example yoursite.com
-        if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-        $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') && $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev'){
+        if (isset($_SERVER['PANTHEON_ENVIRONMENT']) {
             if ($_SERVER['HTTP_HOST'] == 'www.rachelwhitton.com' ||
             $_SERVER['HTTP_HOST'] == 'live-rachelwhitton.pantheon.io') {
                 header('HTTP/1.0 301 Moved Permanently');
