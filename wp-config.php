@@ -64,7 +64,11 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
-
+    /** A couple extra tweaks to help things run well on Pantheon. **/
+    if (isset($_SERVER['HTTP_HOST'])) {
+      define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+      define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+    }
   // Require HTTPS.
   if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
     $_SERVER['HTTPS'] === 'OFF') {
