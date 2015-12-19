@@ -1,0 +1,113 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "WP Redis"
+msgstr ""
+
+#. Short description.
+msgid ""
+"Back your WP Object Cache with Redis, a high-performance in-memory storage backend.\n"
+"\n"
+"[![Build Status](https://travis-ci.org/pantheon-systems/wp-redis."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "For sites concerned with high traffic, speed for logged-in users, or dynamic pageloads, a high-speed and persistent object cache is a must. You also need something that can scale across multiple instances of your application, so using local file caches or APC are out."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Redis is a great answer, and one we bundle on the Pantheon platform. This is our plugin for integrating with the cache, but you can use it on any self-hosted WordPress site if you have Redis."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Go forth and make awesome!"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Install <code>object-cache.php</code> to <code>wp-content/object-cache.php</code> with a symlink or by copying the file."
+msgstr ""
+
+#. Found in installation list item.
+msgid "<p>Engage thrusters: you are now backing WP's Object Cache with Redis.</p>"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "This assumes you have a PHP environment with the required Redis library and a working Redis server (e.g. Pantheon)."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "If you're not running on Pantheon, edit wp-config.php to add your cache credentials, e.g.:"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Engage thrusters: you are now backing WP's Object Cache with Redis."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: use <code>INSERT IGNORE INTO</code> instead of <code>INSERT INTO</code> to prevent SQL errors when two concurrent processes attempt to write failback flag at the same time."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: use <code>E_USER_WARNING</code> with <code>trigger_error()</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: catch Exceptions thrown during authentication to permit failing back to internal object cache."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: prevent SQL error when <code>$wpdb-&gt;options</code> isn't yet initialized on multisite."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Gracefully fails back to the WordPress object cache when Redis is unavailable or intermittent. Previously, WP Redis would hard fatal."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Triggers a PHP error if Redis goes away mid-request, for you to monitor in your logs. Attempts one reconnect based on specific error messages."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Forces a flushAll on Redis when Redis comes back after failing. This behavior can be disabled with the <code>WP_REDIS_DISABLE_FAILBACK_FLUSH</code> constant."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Show an admin notice when Redis is unavailable but is expected to be."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial commit of working code for the benefit of all."
+msgstr ""
+
+#. Found in faq header.
+msgid "Why would I want to use this plugin?"
+msgstr ""
+
+#. Found in faq header.
+msgid "How does this work with other caching plugins?"
+msgstr ""
+
+#. Found in faq header.
+msgid "How can I contribute?"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "If you are concerned with the speed of your site, backing it with a high-performance, persistent object cache can have a huge impact. It takes load off your database, and is faster for loading all the data objects WordPress needs to run."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "This plugin is for the internal application object cache. It doesn't have anything to do with page caches. On Pantheon you do not need additional page caching, but if you are self-hosted you can use your favorite page cache plugins in conjunction with WP Redis."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The best way to contribute to the development of this plugin is by participating on the GitHub project:"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "https://github.com/pantheon-systems/wp-redis"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Pull requests and issues are welcome!"
+msgstr ""

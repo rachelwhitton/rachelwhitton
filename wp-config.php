@@ -138,11 +138,23 @@ $table_prefix = 'wp_';
 define('WPLANG', '');
 
 
-if ( in_array( $_ENV['PANTHEON_ENVIRONMENT'], array( 'test', 'live' ) ) && ! defined( 'WP_DEBUG', false ) ) {
-     define('WP_DEBUG', false);
+// All Pantheon Environments.
+if (defined('PANTHEON_ENVIRONMENT')) {
+  //Wordpress debug settings in development environments.
+  if (!in_array(PANTHEON_ENVIRONMENT, array('test', 'live'))) {
+    // Debugging enabled.
+	define( 'WP_DEBUG', true );
+	define( 'WP_DEBUG_LOG', true ); // Stored in wp-content/debug.log
+	define( 'WP_DEBUG_DISPLAY', true );
   }
-  else
-     define( 'WP_DEBUG', true );
+  // Wordpress debug settings in test and live environments.
+  else {
+    // Debugging disabled.
+	define( 'WP_DEBUG', false );
+	define( 'WP_DEBUG_LOG', false ); // Read-only access in Test and Live.
+	define( 'WP_DEBUG_DISPLAY', false );
+  }
+}
 
 
 /* That's all, stop editing! Happy Pressing. */
