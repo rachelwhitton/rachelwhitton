@@ -65,20 +65,37 @@ else:
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
     /** A couple extra tweaks to help things run well on Pantheon. **/
-    if (isset($_SERVER['HTTP_HOST'])) {
-      define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
-      define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
-    }
-  // Require HTTPS.
-  if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-    $_SERVER['HTTPS'] === 'OFF') {
-    if (!isset($_SERVER['HTTP_X_SSL']) ||
-       (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
-       header('HTTP/1.0 301 Moved Permanently');
-       header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-       exit();
-     }
-   }
+    if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
+    $domain = 'dev.rachelwhitton.com';
+  }
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
+    $domain = 'test.rachelwhitton.com';
+  }
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+    $domain = 'rachelwhitton.com';
+  }
+  else {
+    # Fallback value for multidev or other environments.
+    # This covers environment-sitename.pantheon.io domains
+    # that are generated per environment.
+    $domain = $_SERVER['HTTP_HOST'];
+  }
+
+  # Define constants for WordPress on Pantheon.
+  define('WP_HOME', 'https://' . $domain);
+  define('WP_SITEURL', 'https://' . $domain);
+
+}
+
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+     ($_SERVER['HTTP_X_FORWARDED_PROTO'] != 'https' ||
+     $_SERVER['HTTP_HOST'] != $domain)) {
+  header('HTTP/1.0 301 Moved Permanently');
+  header('Location: https://' . $domain . $_SERVER['REQUEST_URI']);
+  header('Cache-Control: public, max-age=3600');
+  exit();
+}
 
 
     // Don't show deprecations; useful under PHP 5.5
