@@ -178,20 +178,10 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 if (($_SERVER['REQUEST_URI'] == '/sitemap.xml') &&
   (php_sapi_name() != "cli")) {
   header('HTTP/1.0 301 Moved Permanently');
-  header('Location: /sitemap_index.xml');
+  header('Location: https://rachelwhitton.com/sitemap_index.xml');
   exit();
 }
 
-// Redirect to force indexing with custom domain sitemap
-$subject = $_SERVER['HTTP_HOST'];
-$pattern = '#/pantheonsite.io/sitemap_index.xml$/#';
-preg_match($pattern, $subject, $matches);
-$counted = count($matches);
-if (($counted > 0 ) && (php_sapi_name() != "cli")) {
-    header('HTTP/1.0 301 Moved Permanently');
-    header('Location: https://rachelwhitton.com/sitemap_index.xml'. $_SERVER['REQUEST_URI']);
-    exit();
-}
 
 
 /* That's all, stop editing! Happy Pressing. */
