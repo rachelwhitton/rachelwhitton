@@ -174,6 +174,15 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   }
 }
 
+// 301 Redirect from /old to /new.
+if (($_SERVER['REQUEST_URI'] == '/sitemap.xml') &&
+  (php_sapi_name() != "cli")) {
+  header('HTTP/1.0 301 Moved Permanently');
+  header('Location: /sitemap_index.xml');
+  exit();
+}
+
+
 
 /* That's all, stop editing! Happy Pressing. */
 
