@@ -101,8 +101,9 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
     // Force the use of a safe temp directory when in a container
+
     if ( defined( 'PANTHEON_BINDING' ) ):
-        define( 'WP_TEMP_DIR', sprintf( '/srv/bindings/%s/tmp', PANTHEON_BINDING ) );
+    define('WP_TEMP_DIR', ABSPATH . 'wp-content/uploads/tmp');
     endif;
 
     // FS writes aren't permitted in test or live, so we should let WordPress know to disable relevant UI
