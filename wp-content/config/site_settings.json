@@ -1,6 +1,6 @@
 {
     "acf_version": "4.4.2",
-    "active_plugins": "a:6:{i:0;s:44:\"wp-native-php-sessions\/pantheon-sessions.php\";i:1;s:33:\"github-updater\/github-updater.php\";i:2;s:45:\"rickroll-admin-login\/rickroll-admin-login.php\";i:3;s:31:\"test-temp-dir\/test-temp-dir.php\";i:4;s:24:\"wordpress-seo\/wp-seo.php\";i:5;s:17:\"wp-cfm\/wp-cfm.php\";}",
+    "active_plugins": "a:7:{i:0;s:44:\"wp-native-php-sessions\/pantheon-sessions.php\";i:1;s:33:\"github-updater\/github-updater.php\";i:2;s:31:\"test-temp-dir\/test-temp-dir.php\";i:3;s:43:\"wiggle-admin-login\/rickroll-admin-login.php\";i:4;s:24:\"wordpress-seo\/wp-seo.php\";i:5;s:17:\"wp-cfm\/wp-cfm.php\";i:6;s:43:\"yoast-comment-hacks\/yoast-comment-hacks.php\";}",
     "admin_email": "rach.whitton@gmail.com",
     "avatar_default": "mystery",
     "avatar_rating": "G",
@@ -88,8 +88,8 @@
     "ping_sites": "http:\/\/rpc.pingomatic.com\/",
     "posts_per_page": "10",
     "posts_per_rss": "10",
-    "recently_activated": "a:2:{s:65:\"mobile-website-builder-for-wordpress-by-dudamobile\/dudamobile.php\";i:1456936178;s:47:\"wordpress-mobile-pack\/wordpress-mobile-pack.php\";i:1456935678;}",
-    "recently_edited": "a:5:{i:0;s:94:\"\/srv\/bindings\/0342e660c81a45b79b38ace630b150e7\/code\/wp-content\/themes\/twentysixteen\/single.php\";i:2;s:93:\"\/srv\/bindings\/0342e660c81a45b79b38ace630b150e7\/code\/wp-content\/themes\/twentysixteen\/style.css\";i:3;s:93:\"\/srv\/bindings\/9e912f9fe99e44ac8a807c2b699b922c\/code\/wp-content\/themes\/twentysixteen\/style.css\";i:4;s:92:\"\/srv\/bindings\/9e912f9fe99e44ac8a807c2b699b922c\/code\/wp-content\/themes\/twentysixteen\/page.php\";i:5;s:94:\"\/srv\/bindings\/9e912f9fe99e44ac8a807c2b699b922c\/code\/wp-content\/themes\/twentysixteen\/single.php\";}",
+    "recently_activated": "a:4:{s:44:\"wp-native-php-sessions\/pantheon-sessions.php\";i:1457544336;s:31:\"test-temp-dir\/test-temp-dir.php\";i:1457544336;s:45:\"rickroll-admin-login\/rickroll-admin-login.php\";i:1457544336;s:17:\"wp-cfm\/wp-cfm.php\";i:1457544336;}",
+    "recently_edited": "a:5:{i:0;s:97:\"\/srv\/bindings\/0342e660c81a45b79b38ace630b150e7\/code\/wp-content\/themes\/twentysixteen\/functions.php\";i:2;s:93:\"\/srv\/bindings\/0342e660c81a45b79b38ace630b150e7\/code\/wp-content\/themes\/twentysixteen\/style.css\";i:3;s:94:\"\/srv\/bindings\/0342e660c81a45b79b38ace630b150e7\/code\/wp-content\/themes\/twentysixteen\/single.php\";i:4;s:93:\"\/srv\/bindings\/9e912f9fe99e44ac8a807c2b699b922c\/code\/wp-content\/themes\/twentysixteen\/style.css\";i:5;s:92:\"\/srv\/bindings\/9e912f9fe99e44ac8a807c2b699b922c\/code\/wp-content\/themes\/twentysixteen\/page.php\";}",
     "require_name_email": "1",
     "rss_use_excerpt": "0",
     "sendgrid_api": "api",
