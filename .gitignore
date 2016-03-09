@@ -54,5 +54,5 @@ Thumbs.db
 ##########
 .sass-cache
 
-vendor/
+/vendor/
 .env
