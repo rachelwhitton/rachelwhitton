@@ -406,4 +406,4 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 
-include_once( __DIR__ . '/wp-dependency-installer.php' );
+include_once( ABSPATH . '/wp-dependency-installer.php' );
