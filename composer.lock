@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7416fc20b662c75d52045de3dd18f583",
-    "content-hash": "367013d2196f04491911a783a1e6d7a5",
+    "hash": "6f4f85bce969d78be5994e9f18910a4f",
+    "content-hash": "2c588576d867da1fa79625ebb0d9ae6d",
     "packages": [
         {
             "name": "afragen/github-updater",
@@ -151,17 +151,6 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/rachelwhitton/test-temp-dir/archive/master.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "wordpress-plugin"
-        },
-        {
-            "name": "rachelwhitton/wiggle-admin-login",
-            "version": "1.3.3",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/rachelwhitton/rickroll-admin-login/archive/master.zip",
                 "reference": null,
                 "shasum": null
             },

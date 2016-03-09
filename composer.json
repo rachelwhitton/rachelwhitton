@@ -47,7 +47,6 @@
         "wpackagist-plugin/wordpress-seo": "^3.1.1",
         "wpackagist-theme/twentysixteen": "^1.1",
         "afragen/github-updater": "^5.3",
-        "rachelwhitton/wiggle-admin-login": "^1.3.3",
         "rachelwhitton/test-temp-dir": "^0.0.1"
     }
 
