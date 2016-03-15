@@ -174,11 +174,10 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   }
 }
 
-// 301 Redirect from /sitemap.xml to /sitemap_index.xml
-if (($_SERVER['REQUEST_URI'] == '/sitemap.xml') &&
-  (php_sapi_name() != "cli")) {
+// 301 Redirect to live environment's sitemap on any environment when requesting sitemap.xml or sitemap_index.xml
+if ($_SERVER['REQUEST_URI'] == '/sitemap.xml' ) {
   header('HTTP/1.0 301 Moved Permanently');
-  header('Location: https://rachelwhitton.com/sitemap_index.xml');
+  header('Location: /sitemap_index.xml');
   exit();
 }
 
