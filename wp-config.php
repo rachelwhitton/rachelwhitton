@@ -156,7 +156,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
     }
   }
   // Standardize Test environment on HTTPS and test subdomain
-  if $_SERVER['PANTHEON_ENVIRONMENT'] === 'test' {
+  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
     define('WP_HOME', 'https://test.rachelwhitton.com' );
     define('WP_SITEURL', 'https://test.rachelwhitton.com' );
     if ($_SERVER['HTTP_HOST'] != 'test.rachelwhitton.com' ||
@@ -168,7 +168,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
     }
   }
   // Standardize Dev environment on HTTPS and dev subdomain
-  if $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev' {
+  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
     define('WP_HOME', 'https://dev.rachelwhitton.com' );
     define('WP_SITEURL', 'https://dev.rachelwhitton.com' );
     if ($_SERVER['HTTP_HOST'] != 'dev.rachelwhitton.com' ||
