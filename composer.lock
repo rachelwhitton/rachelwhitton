@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f4f85bce969d78be5994e9f18910a4f",
-    "content-hash": "2c588576d867da1fa79625ebb0d9ae6d",
+    "hash": "f9c8f17e9a84c2568653ef2e305e2c21",
+    "content-hash": "587b2b4d35dbc1b174c7f7b8b0a4dc06",
     "packages": [
         {
             "name": "afragen/github-updater",
-            "version": "5.3.4",
+            "version": "4.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/afragen/github-updater.git",
-                "reference": "22486a33161b7d808fc043492886e15db67147aa"
+                "reference": "5a39bf3a9066b1f40736e51de01d3c6d8a35702c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/afragen/github-updater/zipball/22486a33161b7d808fc043492886e15db67147aa",
-                "reference": "22486a33161b7d808fc043492886e15db67147aa",
+                "url": "https://api.github.com/repos/afragen/github-updater/zipball/5a39bf3a9066b1f40736e51de01d3c6d8a35702c",
+                "reference": "5a39bf3a9066b1f40736e51de01d3c6d8a35702c",
                 "shasum": ""
             },
             "require": {
-                "composer/installers": "^1.0",
+                "composer/installers": "~1.0",
                 "php": ">=5.3"
             },
             "type": "wordpress-plugin",
@@ -39,13 +39,11 @@
                 }
             ],
             "keywords": [
-                "install",
                 "plugin",
-                "theme",
                 "updater",
                 "wordpress"
             ],
-            "time": "2016-01-25 00:54:59"
+            "time": "2015-07-22 22:36:24"
         },
         {
             "name": "composer/installers",
@@ -53,12 +51,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "b3d1f3125a77af66d2bfd934c775150e4c9aecc3"
+                "reference": "1cf7cc4b89d5e8549bbb7d6ab1de75da13d27988"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/b3d1f3125a77af66d2bfd934c775150e4c9aecc3",
-                "reference": "b3d1f3125a77af66d2bfd934c775150e4c9aecc3",
+                "url": "https://api.github.com/repos/composer/installers/zipball/1cf7cc4b89d5e8549bbb7d6ab1de75da13d27988",
+                "reference": "1cf7cc4b89d5e8549bbb7d6ab1de75da13d27988",
                 "shasum": ""
             },
             "require": {
@@ -80,8 +78,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -96,12 +94,14 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
                 "SMF",
                 "Thelia",
@@ -143,30 +143,81 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-02-27 14:38:36"
+            "time": "2016-04-05 11:42:46"
         },
         {
-            "name": "rachelwhitton/test-temp-dir",
-            "version": "0.0.1",
+            "name": "koodimonni/composer-dropin-installer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
+                "reference": "3ef200266ce8bc237209a32d7ed816826229e861"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/rachelwhitton/test-temp-dir/archive/master.zip",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/3ef200266ce8bc237209a32d7ed816826229e861",
+                "reference": "3ef200266ce8bc237209a32d7ed816826229e861",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*-dev"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Koodimonni\\Composer\\Dropin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Koodimonni\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "WTFPL"
+            ],
+            "authors": [
+                {
+                    "name": "Onni Hakala",
+                    "email": "onni@koodimonni.fi"
+                }
+            ],
+            "description": "Do what the fuck you want with your composer packages aka. Composer Dropin installer. Install packages or part of packages into custom paths without overwriting existing stuff.",
+            "time": "2016-03-02 19:00:26"
+        },
+        {
+            "name": "wpackagist-plugin/pantheon-hud",
+            "version": "0.1.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/pantheon-hud/",
+                "reference": "tags/0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/pantheon-hud.0.1.0.zip",
                 "reference": null,
                 "shasum": null
             },
-            "type": "wordpress-plugin"
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/pantheon-hud/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.1.1"
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/3.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.1.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.1.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -181,7 +232,7 @@
             "version": "1.4.4",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-cfm/",
+                "url": "https://plugins.svn.wordpress.org/wp-cfm/",
                 "reference": "trunk"
             },
             "dist": {
@@ -198,15 +249,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-native-php-sessions",
-            "version": "0.4",
+            "version": "0.5",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-native-php-sessions/",
-                "reference": "trunk"
+                "url": "https://plugins.svn.wordpress.org/wp-native-php-sessions/",
+                "reference": "tags/0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.0.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -217,16 +268,16 @@
             "homepage": "https://wordpress.org/plugins/wp-native-php-sessions/"
         },
         {
-            "name": "wpackagist-plugin/yoast-comment-hacks",
-            "version": "1.0",
+            "name": "wpackagist-plugin/wp-redis",
+            "version": "0.4.0",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/yoast-comment-hacks/",
-                "reference": "tags/1.0"
+                "url": "https://plugins.svn.wordpress.org/wp-redis/",
+                "reference": "tags/0.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/yoast-comment-hacks.1.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-redis.0.4.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -234,33 +285,61 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/yoast-comment-hacks/"
+            "homepage": "https://wordpress.org/plugins/wp-redis/"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "rachelwhitton/drop-in-redis",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rachelwhitton/drop-in-redis.git",
+                "reference": "master"
+            },
+            "type": "drop-in",
+            "time": "2016-04-06 19:35:36"
         },
         {
-            "name": "wpackagist-theme/twentysixteen",
-            "version": "1.1",
+            "name": "rachelwhitton/my-custom-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rachelwhitton/my-custom-plugin.git",
+                "reference": "master"
+            },
+            "type": "wordpress-plugin",
+            "time": "2016-03-28 18:55:56"
+        },
+        {
+            "name": "wpackagist-plugin/solr-power",
+            "version": "dev-trunk",
             "source": {
                 "type": "svn",
-                "url": "http://themes.svn.wordpress.org/twentysixteen/",
-                "reference": "1.1"
+                "url": "https://plugins.svn.wordpress.org/solr-power/",
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/twentysixteen.1.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/solr-power.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/twentysixteen/"
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/solr-power/",
+            "time": "2016-01-06 18:40:04"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "wpackagist-plugin/solr-power": 20,
+        "rachelwhitton/my-custom-plugin": 20,
+        "rachelwhitton/drop-in-redis": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
