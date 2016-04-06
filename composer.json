@@ -1,6 +1,6 @@
 {
   "name": "rachelwhitton/rachelwhitton",
-  "description":"Personal WP Site",
+  "description":"Personal WP Site used mostly for testing things for docs",
   "type": "composer",
   "minimum-stability": "dev",
   "config"      : {
@@ -55,7 +55,6 @@
   },
   "require": {
     "composer/installers": "^1.0.21",
-    "afragen/github-updater": "^4.6",
     "koodimonni/composer-dropin-installer": "*",
     "wpackagist-plugin/wp-cfm": "1.*",
     "wpackagist-plugin/pantheon-hud": "0.1.0",

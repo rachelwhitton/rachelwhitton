@@ -4,47 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f9c8f17e9a84c2568653ef2e305e2c21",
-    "content-hash": "587b2b4d35dbc1b174c7f7b8b0a4dc06",
+    "hash": "b9fceba0e0c3def7d835d3d5c3c16b9e",
+    "content-hash": "11ec64cdffa23d49d4418a2feabf5e72",
     "packages": [
-        {
-            "name": "afragen/github-updater",
-            "version": "4.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/afragen/github-updater.git",
-                "reference": "5a39bf3a9066b1f40736e51de01d3c6d8a35702c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/afragen/github-updater/zipball/5a39bf3a9066b1f40736e51de01d3c6d8a35702c",
-                "reference": "5a39bf3a9066b1f40736e51de01d3c6d8a35702c",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.3"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPLv2"
-            ],
-            "authors": [
-                {
-                    "name": "Andy Fragen",
-                    "email": "andy@thefragens.com",
-                    "homepage": "http://thefragens.com",
-                    "role": "Developer"
-                }
-            ],
-            "keywords": [
-                "plugin",
-                "updater",
-                "wordpress"
-            ],
-            "time": "2015-07-22 22:36:24"
-        },
         {
             "name": "composer/installers",
             "version": "dev-master",
