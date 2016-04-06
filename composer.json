@@ -33,25 +33,11 @@
           "reference": "master"
         }
       }
-    },
-    "drop-in-redis": {
-      "type": "package",
-      "package": {
-        "name": "rachelwhitton/drop-in-redis",
-        "type": "drop-in",
-        "version": "dev-master",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/rachelwhitton/drop-in-redis.git",
-          "reference": "master"
-        }
-      }
     }
   },
   "require-dev": {
     "wpackagist-plugin/solr-power": "dev-trunk",
-    "rachelwhitton/my-custom-plugin": "dev-master",
-    "rachelwhitton/drop-in-redis": "dev-master"
+    "rachelwhitton/my-custom-plugin": "dev-master"
   },
   "require": {
     "composer/installers": "^1.0.21",

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b9fceba0e0c3def7d835d3d5c3c16b9e",
-    "content-hash": "11ec64cdffa23d49d4418a2feabf5e72",
+    "hash": "4ba0638ad74c02730a454b4b9ffbde48",
+    "content-hash": "45ea374f8b948374bd206ff4e8e43276",
     "packages": [
         {
             "name": "composer/installers",
@@ -252,17 +252,6 @@
     ],
     "packages-dev": [
         {
-            "name": "rachelwhitton/drop-in-redis",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rachelwhitton/drop-in-redis.git",
-                "reference": "master"
-            },
-            "type": "drop-in",
-            "time": "2016-04-06 19:35:36"
-        },
-        {
             "name": "rachelwhitton/my-custom-plugin",
             "version": "dev-master",
             "source": {
@@ -299,8 +288,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "wpackagist-plugin/solr-power": 20,
-        "rachelwhitton/my-custom-plugin": 20,
-        "rachelwhitton/drop-in-redis": 20
+        "rachelwhitton/my-custom-plugin": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
