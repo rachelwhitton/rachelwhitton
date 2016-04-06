@@ -143,7 +143,7 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 /* That's all, stop editing! Happy Pressing. */
 
 // Standardize Live environment on HTTPS and www subdomain
-if isset($_SERVER['PANTHEON_ENVIRONMENT'] {
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) {
   if $_SERVER['PANTHEON_ENVIRONMENT'] === 'live' {
     define('WP_HOME', 'https://www.rachelwhitton.com' );
     define('WP_SITEURL', 'https://www.rachelwhitton.com' );
