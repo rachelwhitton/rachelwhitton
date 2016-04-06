@@ -65,11 +65,11 @@ else:
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
 
-    /** A couple extra tweaks to help things run well on Pantheon. **/
+    /** A couple extra tweaks to help things run well on Pantheon.
     if (isset($_SERVER['HTTP_HOST'])) {
       define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
       define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
-    }
+    }**/
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
     // Force the use of a safe temp directory when in a container
@@ -142,8 +142,8 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 
 /* That's all, stop editing! Happy Pressing. */
 
-// Standardize Live environment on HTTPS and www subdomain
 if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+  // Standardize Live environment on https://www.rachelwhitton.com
   if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
     define('WP_HOME', 'https://www.rachelwhitton.com' );
     define('WP_SITEURL', 'https://www.rachelwhitton.com' );
@@ -155,7 +155,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
       exit();
     }
   }
-  // Standardize Test environment on HTTPS and test subdomain
+  // Standardize Test environment on https://test.rachelwhitton.com
   if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
     define('WP_HOME', 'https://test.rachelwhitton.com' );
     define('WP_SITEURL', 'https://test.rachelwhitton.com' );
@@ -167,7 +167,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
       exit();
     }
   }
-  // Standardize Dev environment on HTTPS and dev subdomain
+  // Standardize Dev environment on https://dev.rachelwhitton.com
   if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
     define('WP_HOME', 'https://dev.rachelwhitton.com' );
     define('WP_SITEURL', 'https://dev.rachelwhitton.com' );
