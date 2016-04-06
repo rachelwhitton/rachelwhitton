@@ -67,8 +67,8 @@ else:
 
     /** A couple extra tweaks to help things run well on Pantheon. **/
     if (isset($_SERVER['HTTP_HOST'])) {
-      define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
-      define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+      define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+      define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
     }
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
