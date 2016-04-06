@@ -144,10 +144,10 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 
 // Standardize Live environment on HTTPS and www subdomain
 if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
-  if $_SERVER['PANTHEON_ENVIRONMENT'] === 'live' {
+  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
     define('WP_HOME', 'https://www.rachelwhitton.com' );
     define('WP_SITEURL', 'https://www.rachelwhitton.com' );
-    if $_SERVER['HTTP_HOST'] != 'www.rachelwhitton.com' ||
+    if ($_SERVER['HTTP_HOST'] != 'www.rachelwhitton.com' ||
         !isset($_SERVER['HTTP_X_SSL']) ||
         $_SERVER['HTTP_X_SSL'] != 'ON' ) {
       header('HTTP/1.0 301 Moved Permanently');
@@ -159,7 +159,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
   if $_SERVER['PANTHEON_ENVIRONMENT'] === 'test' {
     define('WP_HOME', 'https://test.rachelwhitton.com' );
     define('WP_SITEURL', 'https://test.rachelwhitton.com' );
-    if $_SERVER['HTTP_HOST'] != 'test.rachelwhitton.com' ||
+    if ($_SERVER['HTTP_HOST'] != 'test.rachelwhitton.com' ||
         !isset($_SERVER['HTTP_X_SSL']) ||
         $_SERVER['HTTP_X_SSL'] != 'ON' ) {
       header('HTTP/1.0 301 Moved Permanently');
@@ -171,7 +171,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
   if $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev' {
     define('WP_HOME', 'https://dev.rachelwhitton.com' );
     define('WP_SITEURL', 'https://dev.rachelwhitton.com' );
-    if $_SERVER['HTTP_HOST'] != 'dev.rachelwhitton.com' ||
+    if ($_SERVER['HTTP_HOST'] != 'dev.rachelwhitton.com' ||
         !isset($_SERVER['HTTP_X_SSL']) ||
         $_SERVER['HTTP_X_SSL'] != 'ON' ) {
       header('HTTP/1.0 301 Moved Permanently');
