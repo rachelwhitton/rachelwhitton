@@ -177,7 +177,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
 // 301 Redirect from /sitemap.xml to /sitemap_index.xml
 if ($_SERVER['REQUEST_URI'] == '/sitemap.xml') {
   header('HTTP/1.0 301 Moved Permanently');
-  header('Location: /sitemap_index.xml');
+  header('Location: https://www.rachelwhitton.com/sitemap_index.xml');
   exit();
 }
 
