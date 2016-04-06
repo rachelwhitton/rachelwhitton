@@ -64,46 +64,17 @@ else:
     define('LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT']);
     define('NONCE_SALT',       $_ENV['NONCE_SALT']);
     /**#@-*/
+
     /** A couple extra tweaks to help things run well on Pantheon. **/
-    if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
-    $domain = 'dev.rachelwhitton.com';
-  }
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
-    $domain = 'test.rachelwhitton.com';
-  }
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
-    $domain = 'rachelwhitton.com';
-  }
-  else {
-    # Fallback value for multidev or other environments.
-    # This covers environment-sitename.pantheon.io domains
-    # that are generated per environment.
-    $domain = $_SERVER['HTTP_HOST'];
-  }
-
-  # Define constants for WordPress on Pantheon.
-  define('WP_HOME', 'https://' . $domain);
-  define('WP_SITEURL', 'https://' . $domain);
-
-}
-
-if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
-     ($_SERVER['HTTP_X_FORWARDED_PROTO'] != 'https' ||
-     $_SERVER['HTTP_HOST'] != $domain)) {
-  header('HTTP/1.0 301 Moved Permanently');
-  header('Location: https://' . $domain . $_SERVER['REQUEST_URI']);
-  header('Cache-Control: public, max-age=3600');
-  exit();
-}
-
-
+    if (isset($_SERVER['HTTP_HOST'])) {
+      define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+      define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+    }
     // Don't show deprecations; useful under PHP 5.5
     error_reporting(E_ALL ^ E_DEPRECATED);
     // Force the use of a safe temp directory when in a container
-
     if ( defined( 'PANTHEON_BINDING' ) ):
-    define('WP_TEMP_DIR', ABSPATH . 'wp-content/uploads/tmp');
+        define( 'WP_TEMP_DIR', sprintf( '/srv/bindings/%s/tmp', PANTHEON_BINDING ) );
     endif;
 
     // FS writes aren't permitted in test or live, so we should let WordPress know to disable relevant UI
@@ -155,36 +126,60 @@ $table_prefix = 'wp_';
  */
 define('WPLANG', '');
 
-
-// All Pantheon Environments.
-if (defined('PANTHEON_ENVIRONMENT')) {
-  //Wordpress debug settings in development environments.
-  if (!in_array(PANTHEON_ENVIRONMENT, array('test', 'live'))) {
-    // Debugging enabled.
-	define( 'WP_DEBUG', true );
-	define( 'WP_DEBUG_LOG', true ); // Stored in wp-content/debug.log
-	define( 'WP_DEBUG_DISPLAY', true );
-  }
-  // Wordpress debug settings in test and live environments.
-  else {
-    // Debugging disabled.
-	define( 'WP_DEBUG', false );
-	define( 'WP_DEBUG_LOG', false ); // Read-only access in Test and Live.
-	define( 'WP_DEBUG_DISPLAY', false );
-  }
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ *
+ * You may want to examine $_ENV['PANTHEON_ENVIRONMENT'] to set this to be
+ * "true" in dev, but false in test and live.
+ */
+if ( ! defined( 'WP_DEBUG' ) ) {
+    define('WP_DEBUG', false);
 }
-
-// 301 Redirect to live environment's sitemap on any environment when requesting sitemap.xml or sitemap_index.xml
-if ($_SERVER['REQUEST_URI'] == '/sitemap.xml' ) {
-  header('HTTP/1.0 301 Moved Permanently');
-  header('Location: /sitemap_index.xml');
-  exit();
-}
-
-
 
 /* That's all, stop editing! Happy Pressing. */
 
+// Standardize Live environment on HTTPS and www subdomain
+if isset($_SERVER['PANTHEON_ENVIRONMENT'] {
+  if $_SERVER['PANTHEON_ENVIRONMENT'] === 'live' {
+    define('WP_HOME', 'https://www.rachelwhitton.com' );
+    define('WP_SITEURL', 'https://www.rachelwhitton.com' );
+    if $_SERVER['HTTP_HOST'] != 'www.rachelwhitton.com' ||
+        !isset($_SERVER['HTTP_X_SSL']) ||
+        $_SERVER['HTTP_X_SSL'] != 'ON' ) {
+      header('HTTP/1.0 301 Moved Permanently');
+      header('Location: https://www.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+      exit();
+    }
+  }
+  // Standardize Test environment on HTTPS and test subdomain
+  if $_SERVER['PANTHEON_ENVIRONMENT'] === 'test' {
+    define('WP_HOME', 'https://test.rachelwhitton.com' );
+    define('WP_SITEURL', 'https://test.rachelwhitton.com' );
+    if $_SERVER['HTTP_HOST'] != 'test.rachelwhitton.com' ||
+        !isset($_SERVER['HTTP_X_SSL']) ||
+        $_SERVER['HTTP_X_SSL'] != 'ON' ) {
+      header('HTTP/1.0 301 Moved Permanently');
+      header('Location: https://test.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+      exit();
+    }
+  }
+  // Standardize Dev environment on HTTPS and dev subdomain
+  if $_SERVER['PANTHEON_ENVIRONMENT'] === 'dev' {
+    define('WP_HOME', 'https://dev.rachelwhitton.com' );
+    define('WP_SITEURL', 'https://dev.rachelwhitton.com' );
+    if $_SERVER['HTTP_HOST'] != 'dev.rachelwhitton.com' ||
+        !isset($_SERVER['HTTP_X_SSL']) ||
+        $_SERVER['HTTP_X_SSL'] != 'ON' ) {
+      header('HTTP/1.0 301 Moved Permanently');
+      header('Location: https://dev.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
+      exit();
+    }
+  }
+}
 
 
 
