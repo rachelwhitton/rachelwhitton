@@ -20,24 +20,10 @@
     "packagist": {
       "type": "composer",
       "url": "https://packagist.org/"
-    },
-    "my-custom-plugin": {
-      "type": "package",
-      "package": {
-        "name": "rachelwhitton/my-custom-plugin",
-        "type": "wordpress-plugin",
-        "version": "dev-master",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/rachelwhitton/my-custom-plugin.git",
-          "reference": "master"
-        }
-      }
     }
   },
   "require-dev": {
-    "wpackagist-plugin/solr-power": "dev-trunk",
-    "rachelwhitton/my-custom-plugin": "dev-master"
+    "wpackagist-plugin/solr-power": "dev-trunk"
   },
   "require": {
     "composer/installers": "^1.0.21",
@@ -47,7 +33,7 @@
     "wpackagist-plugin/wp-native-php-sessions": "0.5",
     "wpackagist-plugin/wp-redis": "0.4.0",
     "wpackagist-plugin/wordpress-seo": "3.*",
-    "wpackagist-theme/bootstrap-four": "0.2.3"
+    "wpackagist-theme/twentysixteen": "1.*"
   },
   "extra": {
     "installer-paths": {

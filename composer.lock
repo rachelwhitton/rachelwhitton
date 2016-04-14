@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1141abb9bfec15a56cdf6990bebe7b1b",
-    "content-hash": "ac3c61b6b0767be3add6dc9d13eea35a",
+    "hash": "979196e73c4c9df075744bfa113947fe",
+    "content-hash": "3fcb27be4a18faa9417a61518de4efd3",
     "packages": [
         {
             "name": "composer/installers",
@@ -250,16 +250,16 @@
             "homepage": "https://wordpress.org/plugins/wp-redis/"
         },
         {
-            "name": "wpackagist-theme/bootstrap-four",
-            "version": "0.2.3",
+            "name": "wpackagist-theme/twentysixteen",
+            "version": "1.2",
             "source": {
                 "type": "svn",
-                "url": "https://themes.svn.wordpress.org/bootstrap-four/",
-                "reference": "0.2.3"
+                "url": "https://themes.svn.wordpress.org/twentysixteen/",
+                "reference": "1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/bootstrap-four.0.2.3.zip",
+                "url": "https://downloads.wordpress.org/theme/twentysixteen.1.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -267,21 +267,10 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/bootstrap-four/"
+            "homepage": "https://wordpress.org/themes/twentysixteen/"
         }
     ],
     "packages-dev": [
-        {
-            "name": "rachelwhitton/my-custom-plugin",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rachelwhitton/my-custom-plugin.git",
-                "reference": "master"
-            },
-            "type": "wordpress-plugin",
-            "time": "2016-03-28 18:55:56"
-        },
         {
             "name": "wpackagist-plugin/solr-power",
             "version": "dev-trunk",
@@ -307,8 +296,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wpackagist-plugin/solr-power": 20,
-        "rachelwhitton/my-custom-plugin": 20
+        "wpackagist-plugin/solr-power": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
