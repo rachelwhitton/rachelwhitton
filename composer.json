@@ -46,7 +46,8 @@
     "wpackagist-plugin/pantheon-hud": "0.1.0",
     "wpackagist-plugin/wp-native-php-sessions": "0.5",
     "wpackagist-plugin/wp-redis": "0.4.0",
-    "wpackagist-plugin/wordpress-seo": "3.*"
+    "wpackagist-plugin/wordpress-seo": "3.*",
+    "wpackagist-theme/bootstrap-four": "0.2.3"
   },
   "extra": {
     "installer-paths": {
