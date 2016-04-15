@@ -33,6 +33,7 @@
     "wpackagist-plugin/wp-native-php-sessions": "0.5",
     "wpackagist-plugin/wp-redis": "0.4.0",
     "wpackagist-plugin/wordpress-seo": "3.*",
+    "wpackagist-plugin/google-analytics-for-wordpress": "5.4.8.2",
     "wpackagist-theme/twentysixteen": "1.*"
   },
   "extra": {
