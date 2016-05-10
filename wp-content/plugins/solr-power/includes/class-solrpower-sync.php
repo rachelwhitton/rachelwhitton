@@ -9,6 +9,11 @@ class SolrPower_Sync {
 	private static $instance = false;
 
 	/**
+	 * Last error message.
+	 * @var string
+	 */
+	var $error_msg;
+	/**
 	 * Grab instance of object.
 	 * @return SolrPower_Sync
 	 */
@@ -79,7 +84,7 @@ class SolrPower_Sync {
 
 
 		if ( is_multisite() ) {
-			$this->delete( $current_blog->domain . $current_blog->path . $post_info->ID );
+			$this->delete( get_current_blog_id() . '_' . $post_info->ID );
 		} else {
 			$this->delete( $post_info->ID );
 		}
@@ -159,7 +164,7 @@ class SolrPower_Sync {
 
 
 		if ( is_multisite() ) {
-			$this->delete( $current_blog->domain . $current_blog->path . $post_info->ID );
+			$this->delete( get_current_blog_id() . '_' . $post_info->ID );
 		} else {
 			$this->delete( $post_info->ID );
 		}
@@ -188,26 +193,21 @@ class SolrPower_Sync {
 			if ( is_multisite() ) {
 				// if we get here we expect that we've "switched" what blog we're running
 				// as
+				global $current_blog;
 
-				if ( $domain == NULL )
-					$domain = $current_blog->domain;
-
-				if ( $path == NULL )
-					$path = $current_blog->path;
-
-
-				$blogid = get_blog_id_from_url( $domain, $path );
-				$doc->setField( 'ID', $domain . $path . $post_info->ID );
-				$doc->setField( 'permalink', get_blog_permalink( $blogid, $post_info->ID ) );
+				$blogid = get_current_blog_id();
+				$doc->setField( 'solr_id', $blogid . '_' . $post_info->ID );
 				$doc->setField( 'blogid', $blogid );
 				$doc->setField( 'blogdomain', $domain );
 				$doc->setField( 'blogpath', $path );
 				$doc->setField( 'wp', 'multisite' );
 			} else {
-				$doc->setField( 'ID', $post_info->ID );
-				$doc->setField( 'permalink', get_permalink( $post_info->ID ) );
-				$doc->setField( 'wp', 'wp' );
+				$doc->setField( 'solr_id', $post_info->ID );
 			}
+			$doc->setField( 'ID', $post_info->ID );
+			$doc->setField( 'permalink', get_permalink( $post_info->ID ) );
+			$doc->setField( 'wp', 'wp' );
+
 
 			$numcomments = 0;
 			if ( $index_comments ) {
@@ -319,11 +319,15 @@ class SolrPower_Sync {
 					$solr->update( $update );
 					syslog( LOG_INFO, "Optimizing: " . get_bloginfo( 'wpurl' ) );
 				}
+				wp_cache_delete( 'solr_index_stats', 'solr' );
 			} else {
 				syslog( LOG_ERR, "failed to get a solr instance created" );
+				$this->error_msg=esc_html( 'failed to get a solr instance created' );
+				return false;
 			}
 		} catch ( Exception $e ) {
-			error_log( "ERROR: " . $e->getMessage() );
+			$this->error_msg=esc_html( $e->getMessage() );
+			return false;
 		}
 	}
 
@@ -336,9 +340,12 @@ class SolrPower_Sync {
 				$update->addCommit();
 				$solr->update( $update );
 			}
+			return true;
 		} catch ( Exception $e ) {
-			syslog( LOG_ERR, $e->getMessage() );
+			$this->error_msg=esc_html( $e->getMessage() );
+			return false;
 		}
+		
 	}
 
 	function delete_all() {
@@ -351,12 +358,15 @@ class SolrPower_Sync {
 				$update->addCommit();
 				$solr->update( $update );
 			}
+			wp_cache_delete( 'solr_index_stats', 'solr' );
+			return true;
 		} catch ( Exception $e ) {
-			echo esc_html( $e->getMessage() );
+			$this->error_msg=esc_html( $e->getMessage() );
+			return false;
 		}
 	}
 
-	function load_all_posts( $prev, $post_type = 'post' ) {
+	function load_all_posts( $prev, $post_type = 'post', $limit = 5, $echo = true ) {
 		global $wpdb, $current_blog, $current_site;
 		$documents				 = array();
 		$cnt					 = 0;
@@ -396,13 +406,21 @@ class SolrPower_Sync {
 				switch_to_blog( $blog_id );
 
 				// now we actually gather the blog posts
-				$query		 = $wpdb->prepare( "SELECT ID FROM %s WHERE post_status = 'publish' AND post_type = '%s' ORDER BY ID;", $wpdb->base_prefix . $bloginfo . '_posts', $post_type );
-				$postids	 = $wpdb->get_results( $query );
-				$postcount	 = count( $postids );
+				$args	 = array(
+					'post_type'		 => apply_filters( 'solr_post_types', get_post_types( array( 'exclude_from_search' => false ) ) ),
+					'post_status'	 => 'publish',
+					'fields'		 => 'ids',
+					'posts_per_page' => absint( $limit ),
+					'offset'		 => absint( $prev )
+				);
+				$query	 = new WP_Query( $args );
+				$postids = $query->posts;
+
+				$postcount = count( $postids );
 				syslog( LOG_INFO, "building $postcount documents for " . substr( get_bloginfo( 'wpurl' ), 7 ) );
 				for ( $idx = 0; $idx < $postcount; $idx++ ) {
 
-					$postid	 = $postids[ $idx ]->ID;
+					$postid	 = $postids[ $idx ];
 					$last	 = $postid;
 					$percent = (floatval( $idx ) / floatval( $postcount )) * 100;
 					if ( $prev && !$found ) {
@@ -444,28 +462,29 @@ class SolrPower_Sync {
 			// done importing so lets switch back to the proper blog id
 			restore_current_blog();
 		} else {
-			$query		 = $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = '%s' ORDER BY ID;", $post_type );
-			$posts		 = $wpdb->get_results( $query );
+			$args		 = array(
+				'post_type'		 => apply_filters( 'solr_post_types', get_post_types( array( 'exclude_from_search' => false ) ) ),
+				'post_status'	 => 'publish',
+				'fields'		 => 'ids',
+				'posts_per_page' => absint( $limit ),
+				'offset'		 => absint( $prev )
+			);
+			$query		 = new WP_Query( $args );
+			$posts		 = $query->posts;
 			$postcount	 = count( $posts );
 			if ( 0 == $postcount ) {
-				$end = true;
-				printf( "{\"type\": \"" . $post_type . "\", \"last\": \"%s\", \"end\": true, \"percent\": \"%.2f\"}", $last, 100 );
+				$end	 = true;
+				$results = sprintf( "{\"type\": \"" . $post_type . "\", \"last\": \"%s\", \"end\": true, \"percent\": \"%.2f\"}", $last, 100 );
+				if ( $echo ) {
+					echo $results;
+				}
 				die();
 			}
+			$last	 = absint( $prev ) + 5;
+			$percent = absint( (floatval( $last ) / floatval( $query->found_posts )) * 100 );
 			for ( $idx = 0; $idx < $postcount; $idx++ ) {
-				$postid	 = $posts[ $idx ]->ID;
-				$last	 = $postid;
-				$percent = (floatval( $idx ) / floatval( $postcount )) * 100;
-				if ( $prev && !$found ) {
-					if ( $postid === $prev ) {
-						$found = TRUE;
-					}
-					continue;
-				}
+				$postid = $posts[ $idx ];
 
-				if ( $idx === $postcount - 1 ) {
-					$end = TRUE;
-				}
 				$solr		 = get_solr();
 				$update		 = $solr->createUpdate();
 				$documents[] = $this->build_document( $update->createDocument(), get_post( $postid ) );
@@ -484,11 +503,16 @@ class SolrPower_Sync {
 			$this->post( $documents, true, FALSE );
 		}
 
-		if ( $end ) {
-			printf( "{\"type\": \"" . $post_type . "\", \"last\": \"%s\", \"end\": true, \"percent\": \"%.2f\"}", $last, 100 );
+		if ( 100 <= $percent ) {
+			$results = sprintf( "{\"type\": \"" . $post_type . "\", \"last\": \"%s\", \"end\": true, \"percent\": \"%.2f\"}", $last, 100 );
 		} else {
-			printf( "{\"type\": \"" . $post_type . "\", \"last\": \"%s\", \"end\": false, \"percent\": \"%.2f\"}", $last, $percent );
+			$results = sprintf( "{\"type\": \"" . $post_type . "\", \"last\": \"%s\", \"end\": false, \"percent\": \"%.2f\"}", $last, $percent );
 		}
+		if ( $echo ) {
+			echo $results;
+			return;
+		}
+		return $results;
 	}
 
 	function format_date( $thedate ) {

@@ -9,6 +9,12 @@ class SolrPower_Api {
 	private static $instance = false;
 
 	/**
+	 * Logging for debugging.
+	 * @var array 
+	 */
+	var $log = array();
+
+	/**
 	 * Grab instance of object.
 	 * @return SolrPower_Api
 	 */
@@ -108,7 +114,7 @@ class SolrPower_Api {
 		try {
 			$solr->ping( $solr->createPing() );
 			return true;
-		} catch ( Solarium\Exception $e ) {
+		} catch ( Solarium\Exception\HttpException $e ) {
 			return false;
 		}
 	}
@@ -126,7 +132,7 @@ class SolrPower_Api {
 				'localhost' => array(
 					'host'	 => getenv( 'PANTHEON_INDEX_HOST' ),
 					'port'	 => getenv( 'PANTHEON_INDEX_PORT' ),
-					'scheme' => 'https',
+					'scheme' => apply_filters( 'solr_scheme', 'https' ),
 					'path'	 => $this->compute_path(),
 					'ssl'	 => array( 'local_cert' => realpath( ABSPATH . '../certs/binding.pem' ) )
 				)
@@ -180,6 +186,16 @@ class SolrPower_Api {
 	}
 
 	function master_query( $solr, $qry, $offset, $count, $fq, $sortby, $order, &$plugin_s4wp_settings ) {
+		$this->add_log( array(
+			'Search Query'	 => $qry,
+			'Offset'		 => $offset,
+			'Count'			 => $count,
+			'fq'			 => $fq,
+			'Sort By'		 => $sortby,
+			'Order'			 => $order
+		) );
+
+
 		$response		 = NULL;
 		$facet_fields	 = array();
 		$number_of_tags	 = $plugin_s4wp_settings[ 's4wp_max_display_tags' ];
@@ -272,6 +288,60 @@ class SolrPower_Api {
 		return $response;
 	}
 
+	/**
+	 * Add items to debug log.
+	 * @param array $item Array of items.
+	 */
+	function add_log( $item ) {
+		$this->log = array_merge( $this->log, $item );
+	}
+
+	/**
+	 * Loops through each public post type and returns array of index count.
+	 * @return array
+	 */
+	function index_stats() {
+		$cache_key = 'solr_index_stats';
+		$stats     = wp_cache_get( $cache_key, 'solr' );
+		if ( false === $stats ) {
+
+			$post_types = get_post_types( array( 'exclude_from_search' => false ) );
+
+			$stats = array();
+			foreach ( $post_types as $type ) {
+				$stats[ $type ] = $this->fetch_stat( $type );
+			}
+
+			wp_cache_set( $cache_key, $stats, 'solr', 300 );
+		}
+
+		return $stats;
+	}
+
+	/**
+	 * Queries Solr with specified post_type and returns number found.
+	 *
+	 * @param $type
+	 *
+	 * @return int
+	 */
+	private function fetch_stat( $type ) {
+		$qry    = 'post_type:' . $type;
+		$offset = 0;
+		$count  = 1;
+		$fq     = array();
+		$sortby = 'score';
+		$order  = 'desc';
+		$search = $this->query( $qry, $offset, $count, $fq, $sortby, $order );
+		if ( is_null( $search ) ) {
+			return 0;
+		}
+		$search = $search->getData();
+
+		$search = $search['response'];
+
+		return $search['numFound'];
+	}
 }
 
 SolrPower_Api::get_instance();

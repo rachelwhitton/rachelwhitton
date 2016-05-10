@@ -24,6 +24,7 @@ class SolrPower {
 		add_action( 'wp_enqueue_scripts', array( $this, 'autosuggest_head' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_head' ) );
 		add_filter( 'plugin_action_links', array( $this, 'plugin_settings_link' ), 10, 2 );
+		add_filter( 'debug_bar_panels', array( $this, 'add_panel' ) );
 	}
 
 	function activate() {
@@ -33,7 +34,7 @@ class SolrPower {
 		if ( $errMessage = SolrPower::get_instance()->sanity_check() ) {
 			wp_die( $errMessage );
 		}
-		
+
 		// Don't try to send a schema if we're not on Pantheon servers.
 		if ( !defined( 'SOLR_PATH' ) ) {
 			$schemaSubmit = SolrPower_Api::get_instance()->submit_schema();
@@ -50,17 +51,13 @@ class SolrPower {
 		$returnValue = '';
 		$wp_version	 = get_bloginfo( 'version' );
 
-		if ( getenv( 'PANTHEON_INDEX_HOST' ) === false ) {
-			$returnValue = __( 'Before you can activate this plugin, you must first activate Solr in your Pantheon Dashboard.', 'solr-for-wordpress-on-pantheon' );
+		if ( getenv( 'PANTHEON_ENVIRONMENT' ) !== false && getenv( 'PANTHEON_INDEX_HOST' ) === false ) {
+			$returnValue = __( 'Before you can activate this plugin, you must first <a href="https://pantheon.io/docs/articles/sites/apache-solr/">activate Solr</a> in your Pantheon Dashboard.', 'solr-for-wordpress-on-pantheon' );
 		} else if ( version_compare( $wp_version, '3.0', '<' ) ) {
 			$returnValue = __( 'This plugin requires WordPress 3.0 or greater.', 'solr-for-wordpress-on-pantheon' );
 		}
 
 		return $returnValue;
-	}
-
-	function widget() {
-		register_widget( 's4wp_MLTWidget' );
 	}
 
 	function admin_head() {
@@ -165,6 +162,12 @@ class SolrPower {
 		if ( file_exists( dirname( __FILE__ ) . '/template/search.css' ) ) {
 			wp_enqueue_style( 'solr-search', plugins_url( '/template/search.css', __FILE__ ) );
 		}
+	}
+
+	function add_panel( $panels ) {
+		require_once(SOLR_POWER_PATH . '/includes/class-solrpower-debug.php');
+		array_push( $panels, new SolrPower_Debug() );
+		return $panels;
 	}
 
 }

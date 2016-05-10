@@ -1,10 +1,16 @@
 # Solr Search for WordPress #
-**Contributors:** getpantheon, Outlandish Josh, collinsinternet  
-**Tags:** search  
-**Requires at least:** 4.2  
-**Tested up to:** 4.3  
-**Stable tag:** 4.3  
-**License:** GPLv2 or later  
+**Contributors:** getpantheon, Outlandish Josh, 10up, collinsinternet
+
+**Tags:** search
+
+**Requires at least:** 4.2
+
+**Tested up to:** 4.5
+
+**Stable tag:** 0.3
+
+**License:** GPLv2 or later
+
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
 Improve your user experience with the Apache Solr search engine for your WordPress website.
@@ -22,11 +28,12 @@ Search is critical for your site, but the default search for WordPress leaves a 
 
 ## Installation ##
 
-First install the plugin as per normal. If you are installing on Pantheon, you will need to enable the Apache Solr add-on before you can enable the plugin.
+First install the plugin as per normal. If you are installing on Pantheon, you will need to enable the Apache Solr add-on within the Pantheon Site Dashboard before you can enable the plugin.
 
-1. Index your existing content by going to the plugin options screen and clicking "index content".
-2. Search on!
-3. See the examples/templates directories for more rich implementation guidelines.
+1. Index your existing content by going to the plugin options screen and selecting the applicable **Actions**:
+ - **Index Searchable Post Types**
+2. Search on! Use the **Query** tab to validate indexing options.
+3. See the examples/template directories for more rich implementation guidelines.
 
 ## Development ##
 
@@ -38,13 +45,21 @@ Please feel free to file issues there. Pull requests are also welcome!
 
 ## Changelog ##
 
+### 0.3 ###
+* Bug fixes
+* Settings page updates
+* Filters for AJAX/Admin integration
+* Indexing all publicly queryable post types
+* Debug Bar Extension
+* Default sort option on settings page
+* Initial WP CLI integration
+
 ### 0.2 ###
 * Works "out of the box" by overriding WP_Query()
 * Much improved internal factoring
 
 ### 0.1 ###
 * Initial alpha release (GitHub only)
-
 
 ### 0.0 ###
 * Note this started as a fork of this wonderful project: https://github.com/mattweber/solr-for-wordpress

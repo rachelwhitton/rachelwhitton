@@ -21,13 +21,26 @@ class SolrPower_WP_Query {
 	public static function get_instance() {
 		if ( !self::$instance ) {
 			self::$instance = new self();
+			add_action( 'init', array( self::$instance, 'setup' ) );
 		}
 		return self::$instance;
 	}
 
 	function __construct() {
+		
+	}
+
+	function setup() {
 		// We don't want to do a Solr query if we're doing AJAX or in the admin area.
-		if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || (is_admin()) ) {
+
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			if ( false === apply_filters( 'solr_allow_ajax', false ) ) {
+				return;
+			}
+		}
+
+
+		if ( is_admin() && false === apply_filters( 'solr_allow_admin', false ) ) {
 			return;
 		}
 
@@ -44,6 +57,7 @@ class SolrPower_WP_Query {
 		if ( !$query->is_search() ) {
 			return $request;
 		}
+		$solr_options = SolrPower_Options::get_instance()->get_option();
 
 		$the_page = (!$query->get( 'paged' ) ) ? 1 : $query->get( 'paged' );
 
@@ -51,17 +65,26 @@ class SolrPower_WP_Query {
 		$offset	 = $query->get( 'posts_per_page' ) * ($the_page - 1);
 		$count	 = $query->get( 'posts_per_page' );
 		$fq		 = array();
-		$sortby	 = 'score';
+		$sortby	 = (isset( $solr_options[ 's4wp_default_sort' ] ) && !empty( $solr_options[ 's4wp_default_sort' ] )) ? $solr_options[ 's4wp_default_sort' ] : 'score';
+
 		$order	 = 'desc';
 		$search	 = SolrPower_Api::get_instance()->query( $qry, $offset, $count, $fq, $sortby, $order );
 		if ( is_null( $search ) ) {
 			return false;
 		}
-		$search					 = $search->getData();
+		$search = $search->getData();
+
+		$search_header			 = $search[ 'responseHeader' ];
 		$search					 = $search[ 'response' ];
 		$query->found_posts		 = $search[ 'numFound' ];
 		$query->max_num_pages	 = ceil( $search[ 'numFound' ] / $query->get( 'posts_per_page' ) );
-		$posts					 = array();
+
+		SolrPower_Api::get_instance()->add_log( array(
+			'Results Found'	 => $search[ 'numFound' ],
+			'Query Time'	 => $search_header[ 'QTime' ] . 'ms'
+		) );
+
+		$posts = array();
 
 		foreach ( $search[ 'docs' ] as $post_array ) {
 			$post = new stdClass();
@@ -79,9 +102,15 @@ class SolrPower_WP_Query {
 					continue;
 				}
 
+				if ( 'post_id' == $key ) {
+					$post->ID = $value;
+					continue;
+				}
+
 				$post->$key = $value;
 			}
-			$posts[] = $post;
+			$post->solr	 = true;
+			$posts[]	 = $post;
 		}
 
 		$this->found_posts[ spl_object_hash( $query ) ] = $posts;
@@ -92,7 +121,9 @@ class SolrPower_WP_Query {
 	}
 
 	function found_posts_query( $sql, $query ) {
-
+		if ( !$query->is_search() ) {
+			return $sql;
+		}
 		return '';
 	}
 
