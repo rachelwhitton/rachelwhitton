@@ -422,7 +422,7 @@ add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 function setting_my_first_cookie() {
-  setcookie( test_cookie, 'testvalue', '0', '/', 'dev.rachelwhitton.com', true,true );
+  setcookie( __test_cookie, 'testvalue', '0', '/', 'dev.rachelwhitton.com', true,true );
 }
 // test cookie
 add_action( 'init', 'setting_my_first_cookie' );
