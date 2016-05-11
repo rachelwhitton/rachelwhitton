@@ -420,10 +420,17 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 
-function setting_my_first_cookie() {
+/*function setting_my_first_cookie() {
 	$domain = $_SERVER['HTTP_HOST'];
-	setcookie( STYXKEY__testcookie, 'value', '0', '/', $domain, true,true );
+	setcookie( STYXKEY__testcookie, 'printing value of STYXKEY__testcookie', '0', '/', $domain, true,true );
 
 }
 // test cookie
 add_action( 'init', 'setting_my_first_cookie' );
+
+add_action( 'wp_head', 'my_getcookie' );
+function my_getcookie() {
+   $alert = isset( $_COOKIE['STYXKEY__testcookie'] ) ? $_COOKIE['STYXKEY__testcookie'] : 'not set';
+   echo $alert;
+}
+*/
