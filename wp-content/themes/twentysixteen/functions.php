@@ -423,7 +423,7 @@ add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 function setting_my_first_cookie() {
 	$domain = $_SERVER['HTTP_HOST'];
   $v_value = wp_salt('LOGGED_IN');
-  setcookie( __test_cookie, $v_value, '0', '/', $domain, true,true );
+  setcookie( STYXKEY__test_cookie, $v_value, '0', '/', $domain, true,true );
 }
 // test cookie
 add_action( 'init', 'setting_my_first_cookie' );
