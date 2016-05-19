@@ -23,6 +23,7 @@
     }
   },
   "require-dev": {
+    "wpackagist-plugin/vanilla-forums": "dev-trunk",
     "wpackagist-plugin/solr-power": "dev-trunk"
   },
   "require": {

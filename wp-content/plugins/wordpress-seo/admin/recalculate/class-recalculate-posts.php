@@ -128,4 +128,5 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 
 		return '';
 	}
+
 }

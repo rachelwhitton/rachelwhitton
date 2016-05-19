@@ -41,7 +41,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 				$this->options['usemetakeywords'] !== true
 			),
 			'canonical'       => $this->get_field_config(
-				__( 'Canonical URL', 'wordpress-seo' ),
+				__( 'Canonical', 'wordpress-seo' ),
 				esc_html__( 'The canonical link is shown on the archive page for this term.', 'wordpress-seo' )
 			),
 			'bctitle'         => $this->get_field_config(
@@ -122,4 +122,5 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 
 		return $robot_index;
 	}
+
 }

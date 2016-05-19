@@ -225,7 +225,6 @@ class WPSEO_GSC_Table extends WP_List_Table {
 
 	/**
 	 * Check if the current category allow creating redirects
-	 *
 	 * @return bool
 	 */
 	private function can_create_redirect() {

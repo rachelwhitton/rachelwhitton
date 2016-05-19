@@ -26,6 +26,11 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 	/**
 	 * @var string
 	 */
+	private $link_alt;
+
+	/**
+	 * @var string
+	 */
 	private $link_title;
 
 	/**
@@ -42,6 +47,7 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 			$this->add_tab( $tab );
 		}
 		$this->link_content = $link_content;
+		$this->link_alt     = isset( $options['link_alt'] ) ? $options['link_alt'] : '';
 		$this->link_title   = isset( $options['link_title'] ) ? $options['link_title'] : '';
 	}
 
@@ -51,9 +57,10 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 	public function display_link() {
 		if ( $this->has_tabs() ) {
 			printf(
-				'<li><a href="#wpseo-meta-section-%1$s" class="wpseo-meta-section-link"%2$s>%3$s</a></li>',
+				'<li><a href="#wpseo-meta-section-%1$s" class="wpseo-meta-section-link" alt="%2$s" title="%3$s">%4$s</a></li>',
 				esc_attr( $this->name ),
-				( '' !== $this->link_title ) ? ' title="' . esc_attr( $this->link_title ) . '"' : '',
+				esc_attr( $this->link_alt ),
+				esc_attr( $this->link_title ),
 				$this->link_content
 			);
 		}

@@ -189,4 +189,5 @@ class WPSEO_Import {
 			$wp_file->rmdir( $this->path, true );
 		}
 	}
+
 }

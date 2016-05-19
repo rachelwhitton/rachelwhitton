@@ -37,24 +37,10 @@ if ( ! empty( $_REQUEST['_wp_http_referer'] ) ) {
 
 	<div class="tabwrapper">
 		<div id="title" class="wpseotab">
-			<?php
-
-			$tab_video_url = 'https://yoa.st/screencast-tools-bulk-editor';
-			include WPSEO_PATH . 'admin/views/partial-settings-tab-video.php';
-
-			$wpseo_bulk_titles_table->show_page();
-
-			?>
+			<?php $wpseo_bulk_titles_table->show_page(); ?>
 		</div>
 		<div id="description" class="wpseotab">
-			<?php
-
-			$tab_video_url = 'https://yoa.st/screencast-tools-bulk-editor';
-			include WPSEO_PATH . 'admin/views/partial-settings-tab-video.php';
-
-			$wpseo_bulk_description_table->show_page();
-
-			?>
+			<?php $wpseo_bulk_description_table->show_page(); ?>
 		</div>
 
 	</div>
