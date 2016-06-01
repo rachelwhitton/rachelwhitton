@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f4ce514df7c68d35bf4c7654120b8fa4",
-    "content-hash": "9ecb66795c540a637a1e2bd9001129d3",
+    "hash": "0dbea631603fb7fcaec73014b831378b",
+    "content-hash": "d5f644ef4f57f6a5c3a7074bcf5bde75",
     "packages": [
         {
             "name": "composer/installers",
@@ -333,33 +333,11 @@
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/solr-power/",
             "time": "2016-01-06 18:40:04"
-        },
-        {
-            "name": "wpackagist-plugin/vanilla-forums",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/vanilla-forums/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/vanilla-forums.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/vanilla-forums/",
-            "time": "2015-01-26 18:35:11"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wpackagist-plugin/vanilla-forums": 20,
         "wpackagist-plugin/solr-power": 20,
         "wpackagist-plugin/debug-bar": 20
     },
