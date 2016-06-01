@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae063c0e504fe1e7f21739eff9e3b1aa",
-    "content-hash": "a7ee0dad2c72c62c5747a89c895bdf8c",
+    "hash": "f4ce514df7c68d35bf4c7654120b8fa4",
+    "content-hash": "9ecb66795c540a637a1e2bd9001129d3",
     "packages": [
         {
             "name": "composer/installers",
@@ -293,6 +293,27 @@
     ],
     "packages-dev": [
         {
+            "name": "wpackagist-plugin/debug-bar",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/debug-bar/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/debug-bar.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/debug-bar/",
+            "time": "2016-04-30 09:21:46"
+        },
+        {
             "name": "wpackagist-plugin/solr-power",
             "version": "dev-trunk",
             "source": {
@@ -339,7 +360,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "wpackagist-plugin/vanilla-forums": 20,
-        "wpackagist-plugin/solr-power": 20
+        "wpackagist-plugin/solr-power": 20,
+        "wpackagist-plugin/debug-bar": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -24,7 +24,8 @@
   },
   "require-dev": {
     "wpackagist-plugin/vanilla-forums": "dev-trunk",
-    "wpackagist-plugin/solr-power": "dev-trunk"
+    "wpackagist-plugin/solr-power": "dev-trunk",
+    "wpackagist-plugin/debug-bar": "dev-trunk"
   },
   "require": {
     "composer/installers": "^1.0.21",
