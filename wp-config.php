@@ -67,7 +67,7 @@ else:
 
     /** A couple extra tweaks to help things run well on Pantheon. **/
     if (isset($_SERVER['HTTP_HOST'])) {
-        // HTTP is still the default scheme for now. 
+        // HTTP is still the default scheme for now.
         $scheme = 'http';
         // If we have detected that the end use is HTTPS, make sure we pass that
         // through here, so <img> tags and the like don't generate mixed-mode
@@ -150,6 +150,31 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 
 /* That's all, stop editing! Happy Pressing. */
 
+// Debug Settings - true in dev/multidev but false in test and live
+if (defined('PANTHEON_ENVIRONMENT')) {
+  //Wordpress debug settings in development environments.
+  if (!in_array(PANTHEON_ENVIRONMENT, array('test', 'live'))) {
+    // Debugging enabled.
+    if (!defined( 'WP_DEBUG' )) {
+    define( 'WP_DEBUG', true );
+    }
+    define( 'WP_DEBUG_LOG', true ); // Stored in wp-content/debug.log
+    define( 'WP_DEBUG_DISPLAY', true );
+  }
+  // Wordpress debug settings in test and live environments.
+  else {
+    // Debugging disabled
+    ini_set('log_errors','On');
+    ini_set('display_errors','Off');
+    ini_set('error_reporting', E_ALL );
+    define('WP_DEBUG', false);
+    define('WP_DEBUG_LOG', true);
+    define('WP_DEBUG_DISPLAY', false);
+  }
+}
+
+
+// Standardize domains on dev, test, and live
 if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
   // Standardize Live environment on https://www.rachelwhitton.com
   if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
