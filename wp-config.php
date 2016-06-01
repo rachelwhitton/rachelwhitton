@@ -155,9 +155,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   //Wordpress debug settings in development environments.
   if (!in_array(PANTHEON_ENVIRONMENT, array('test', 'live'))) {
     // Debugging enabled.
-    if (!defined( 'WP_DEBUG' )) {
     define( 'WP_DEBUG', true );
-    }
     define( 'WP_DEBUG_LOG', true ); // Stored in wp-content/debug.log
     define( 'WP_DEBUG_DISPLAY', true );
   }
