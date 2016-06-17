@@ -17,6 +17,20 @@
       "type": "composer",
       "url": "https://wpackagist.org"
     },
+    "OAuth1": {
+      "type": "package",
+      "package": {
+        "name": "wp-api/oauth1",
+        "type": "wordpress-plugin",
+        "version": "dev-master",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/WP-API/OAuth1",
+          "reference": "master"
+        }
+      },
+      "url": "https://github.com/wp-api/oauth1"
+    },
     "packagist": {
       "type": "composer",
       "url": "https://packagist.org/"
@@ -24,16 +38,18 @@
   },
   "require-dev": {
     "wpackagist-plugin/solr-power": "dev-trunk",
-    "wpackagist-plugin/debug-bar": "dev-trunk"
+    "wpackagist-plugin/debug-bar": "dev-trunk",
+    "wp-api/oauth1": "dev-master"
   },
   "require": {
     "composer/installers": "^1.0.21",
     "koodimonni/composer-dropin-installer": "*",
     "wpackagist-plugin/wp-cfm": "1.*",
+    "wpackagist-plugin/rest-api": "2.0-beta13",
     "wpackagist-plugin/pantheon-hud": "0.1.0",
     "wpackagist-plugin/wp-native-php-sessions": "0.5",
     "wpackagist-plugin/wp-redis": "0.4.0",
-    "wpackagist-plugin/wordpress-seo": "3.*",
+    "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/google-analytics-for-wordpress": "5.4.8.2",
     "wpackagist-theme/twentysixteen": "1.*"
   },

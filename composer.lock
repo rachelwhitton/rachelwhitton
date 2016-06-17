@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0dbea631603fb7fcaec73014b831378b",
-    "content-hash": "d5f644ef4f57f6a5c3a7074bcf5bde75",
+    "hash": "476e9c17f2c0689d85172b9b35456d38",
+    "content-hash": "4690ca8fb4f4464828b585cb8d7c381d",
     "packages": [
         {
             "name": "composer/installers",
@@ -191,16 +191,16 @@
             "homepage": "https://wordpress.org/plugins/pantheon-hud/"
         },
         {
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.2.5",
+            "name": "wpackagist-plugin/rest-api",
+            "version": "2.0-beta13",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.2.5"
+                "url": "https://plugins.svn.wordpress.org/rest-api/",
+                "reference": "tags/2.0-beta13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.2.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/rest-api.2.0-beta13.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -208,7 +208,28 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+            "homepage": "https://wordpress.org/plugins/rest-api/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wordpress-seo/",
+            "time": "2016-06-16 07:58:53"
         },
         {
             "name": "wpackagist-plugin/wp-cfm",
@@ -293,6 +314,16 @@
     ],
     "packages-dev": [
         {
+            "name": "wp-api/oauth1",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WP-API/OAuth1",
+                "reference": "master"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
             "name": "wpackagist-plugin/debug-bar",
             "version": "dev-trunk",
             "source": {
@@ -339,7 +370,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "wpackagist-plugin/solr-power": 20,
-        "wpackagist-plugin/debug-bar": 20
+        "wpackagist-plugin/debug-bar": 20,
+        "wp-api/oauth1": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
