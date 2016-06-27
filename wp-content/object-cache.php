@@ -287,6 +287,14 @@ class WP_Object_Cache {
 	var $cache_misses = 0;
 
 	/**
+	 * The amount of times a request was made to Redis
+	 *
+	 * @access private
+	 * @var int
+	 */
+	var $redis_calls = array();
+
+	/**
 	 * List of global groups
 	 *
 	 * @var array
@@ -480,7 +488,7 @@ class WP_Object_Cache {
 				$result = $this->_call_redis( 'hDel', $redis_safe_group, $key );
 			} else {
 				$id = $this->_key( $key, $group );
-				$result = $this->_call_redis( 'delete', $id );
+				$result = $this->_call_redis( 'del', $id );
 			}
 			if ( 1 !== $result ) {
 				return false;
@@ -505,7 +513,7 @@ class WP_Object_Cache {
 		$multisite_safe_group = $this->multisite && ! isset( $this->global_groups[ $group ] ) ? $this->blog_prefix . $group : $group;
 		$redis_safe_group = $this->_key( '', $group );
 		if ( $this->_should_persist( $group ) ) {
-			$result = $this->_call_redis( 'delete', $redis_safe_group );
+			$result = $this->_call_redis( 'del', $redis_safe_group );
 			if ( 1 !== $result ) {
 				return false;
 			}
@@ -549,6 +557,7 @@ class WP_Object_Cache {
 	 * @param int|string $key What the contents in the cache are called
 	 * @param string $group Where the cache contents are grouped
 	 * @param string $force Whether to force a refetch rather than relying on the local cache (default is false)
+	 * @param bool $found Optional. Whether the key was found in the cache. Disambiguates a return of false, a storable value. Passed by reference. Default null.
 	 * @return bool|mixed False on failure to retrieve contents or the cache
 	 *		contents on success
 	 */
@@ -558,26 +567,45 @@ class WP_Object_Cache {
 			$group = 'default';
 		}
 
-		if ( ! $this->_exists( $key, $group ) ) {
+		// Key is set internally, so we can use this value
+		if ( $this->_isset_internal( $key, $group ) && ! $force ) {
+			$this->cache_hits += 1;
+			$found = true;
+			return $this->_get_internal( $key, $group );
+		}
+
+		// Not a persistent group, so don't try Redis if the value doesn't exist
+		// internally
+		if ( ! $this->_should_persist( $group ) ) {
 			$this->cache_misses += 1;
+			$found = false;
 			return false;
 		}
-		$this->cache_hits += 1;
 
-		if ( $this->_should_persist( $group ) && ( $force || ! $this->_isset_internal( $key, $group ) ) ) {
-			if ( self::USE_GROUPS ) {
-				$redis_safe_group = $this->_key( '', $group );
-				$value = $this->_call_redis( 'hGet', $redis_safe_group, $key );
-			} else {
-				$id = $this->_key( $key, $group );
-				$value = $this->_call_redis( 'get', $id );
-			}
-			if ( ! is_numeric( $value ) ) {
-				$value = unserialize( $value );
-			}
-			$this->_set_internal( $key, $group, $value );
+		if ( self::USE_GROUPS ) {
+			$redis_safe_group = $this->_key( '', $group );
+			$value = $this->_call_redis( 'hGet', $redis_safe_group, $key );
+		} else {
+			$id = $this->_key( $key, $group );
+			$value = $this->_call_redis( 'get', $id );
 		}
-		return $this->_get_internal( $key, $group );
+
+		// PhpRedis returns `false` when the key doesn't exist
+		if ( false === $value ) {
+			$this->cache_misses += 1;
+			$found = false;
+			return false;
+		}
+
+		// All non-numeric values are serialized
+		if ( ! is_numeric( $value ) ) {
+			$value = unserialize( $value );
+		}
+
+		$this->_set_internal( $key, $group, $value );
+		$this->cache_hits += 1;
+		$found = true;
+		return $value;
 	}
 
 	/**
@@ -732,15 +760,27 @@ class WP_Object_Cache {
 	 * key and the data.
 	 */
 	public function stats() {
-		echo '<p>';
-		echo '<strong>Cache Hits:</strong>' . (int) $this->cache_hits . '<br />';
-		echo '<strong>Cache Misses:</strong>' . (int) $this->cache_misses . '<br />';
-		echo '</p>';
-		echo '<ul>';
-		foreach ( $this->cache as $group => $cache ) {
-			echo '<li><strong>Group:</strong> ' . esc_html( $group ) . ' - ( ' . number_format( strlen( serialize( $cache ) ) / 1024, 2 ) . 'k )</li>';
+		$total_redis_calls = 0;
+		foreach ( $this->redis_calls as $method => $calls ) {
+			$total_redis_calls += $calls;
 		}
-		echo '</ul>';
+		$out = array();
+		$out[] = '<p>';
+		$out[] = '<strong>Cache Hits:</strong>' . (int) $this->cache_hits . '<br />';
+		$out[] = '<strong>Cache Misses:</strong>' . (int) $this->cache_misses . '<br />';
+		$out[] = '<strong>Redis Calls:</strong>' . (int) $total_redis_calls . ':<br />';
+		foreach ( $this->redis_calls as $method => $calls ) {
+			$out[] = ' - ' . esc_html( $method ) . ': ' . (int) $calls . '<br />';
+		}
+		$out[] = '</p>';
+		$out[] = '<ul>';
+		foreach ( $this->cache as $group => $cache ) {
+			$out[] = '<li><strong>Group:</strong> ' . esc_html( $group ) . ' - ( ' . number_format( strlen( serialize( $cache ) ) / 1024, 2 ) . 'k )</li>';
+		}
+		$out[] = '</ul>';
+		// @codingStandardsIgnoreStart
+		echo implode( PHP_EOL, $out );
+		// @codingStandardsIgnoreEnd
 	}
 
 	/**
@@ -764,6 +804,11 @@ class WP_Object_Cache {
 		if ( $this->_isset_internal( $key, $group ) ) {
 			return true;
 		}
+
+		if ( ! $this->_should_persist( $group ) ) {
+			return false;
+		}
+
 		if ( self::USE_GROUPS ) {
 			$redis_safe_group = $this->_key( '', $group );
 			return $this->_call_redis( 'hExists', $redis_safe_group, $key );
@@ -973,6 +1018,10 @@ class WP_Object_Cache {
 
 		if ( $this->is_redis_connected ) {
 			try {
+				if ( ! isset( $this->redis_calls[ $method ] ) ) {
+					$this->redis_calls[ $method ] = 0;
+				}
+				$this->redis_calls[ $method ]++;
 				$retval = call_user_func_array( array( $this->redis, $method ), $arguments );
 				return $retval;
 			} catch ( RedisException $e ) {
@@ -1004,7 +1053,7 @@ class WP_Object_Cache {
 			}
 		}
 
-		if ( $this->is_redis_failback_flush_enabled() && ! $this->do_redis_failback_flush ) {
+		if ( $this->is_redis_failback_flush_enabled() && ! $this->do_redis_failback_flush && ! empty( $wpdb ) ) {
 			if ( $this->multisite ) {
 				$table = $wpdb->sitemeta;
 				$col1 = 'meta_key';
@@ -1037,12 +1086,14 @@ class WP_Object_Cache {
 				$offset = isset( $arguments[1] ) && 'decrBy' === $method ? $arguments[1] : 1;
 				$val = $val - $offset;
 				return $val;
-			case 'delete':
+			case 'del':
 			case 'hDel':
 				return 1;
 			case 'flushAll':
 			case 'IsConnected':
 			case 'exists':
+			case 'get':
+			case 'hGet':
 				return false;
 		}
 
@@ -1083,20 +1134,20 @@ class WP_Object_Cache {
 		$this->multisite = is_multisite();
 		$this->blog_prefix = $this->multisite ? $blog_id . ':' : '';
 
-		if ( ! $this->_connect_redis() ) {
+		if ( ! $this->_connect_redis() && function_exists( 'add_action' ) ) {
 			add_action( 'admin_notices', array( $this, 'wp_action_admin_notices_warn_missing_redis' ) );
 		}
 
-		if ( $this->multisite ) {
-			$table = $wpdb->sitemeta;
-			$col1 = 'meta_key';
-			$col2 = 'meta_value';
-		} else {
-			$table = $wpdb->options;
-			$col1 = 'option_name';
-			$col2 = 'option_value';
-		}
-		if ( $this->is_redis_failback_flush_enabled() ) {
+		if ( $this->is_redis_failback_flush_enabled() && ! empty( $wpdb ) ) {
+			if ( $this->multisite ) {
+				$table = $wpdb->sitemeta;
+				$col1 = 'meta_key';
+				$col2 = 'meta_value';
+			} else {
+				$table = $wpdb->options;
+				$col1 = 'option_name';
+				$col2 = 'option_value';
+			}
 			// @codingStandardsIgnoreStart
 			$this->do_redis_failback_flush = (bool) $wpdb->get_results( "SELECT {$col2} FROM {$table} WHERE {$col1}='wp_redis_do_redis_failback_flush'" );
 			// @codingStandardsIgnoreEnd

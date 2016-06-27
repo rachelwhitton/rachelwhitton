@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "476e9c17f2c0689d85172b9b35456d38",
-    "content-hash": "4690ca8fb4f4464828b585cb8d7c381d",
+    "hash": "d2ef4f80e76978297371177aacc8c1b5",
+    "content-hash": "f9c8882df6bf279cdf5e40a8cf9ba61c",
     "packages": [
         {
             "name": "composer/installers",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "2db1f3ce7bcf0d294811f5f0214e24d2878a57da"
+                "reference": "3c90d491bafa3d0a1bd57a7d001da839a08d2f88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/2db1f3ce7bcf0d294811f5f0214e24d2878a57da",
-                "reference": "2db1f3ce7bcf0d294811f5f0214e24d2878a57da",
+                "url": "https://api.github.com/repos/composer/installers/zipball/3c90d491bafa3d0a1bd57a7d001da839a08d2f88",
+                "reference": "3c90d491bafa3d0a1bd57a7d001da839a08d2f88",
                 "shasum": ""
             },
             "require": {
@@ -81,6 +81,7 @@
                 "dokuwiki",
                 "drupal",
                 "elgg",
+                "expressionengine",
                 "fuelphp",
                 "grav",
                 "installer",
@@ -106,7 +107,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-05-19 16:58:29"
+            "time": "2016-06-24 07:03:15"
         },
         {
             "name": "koodimonni/composer-dropin-installer",
@@ -152,15 +153,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "5.4.8.2",
+            "version": "5.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "trunk"
+                "reference": "tags/5.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -212,15 +213,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "dev-trunk",
+            "version": "3.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "trunk"
+                "reference": "tags/3.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -228,8 +229,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wordpress-seo/",
-            "time": "2016-06-16 07:58:53"
+            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
         },
         {
             "name": "wpackagist-plugin/wp-cfm",
@@ -273,15 +273,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-redis",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-redis/",
-                "reference": "tags/0.4.0"
+                "reference": "tags/0.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-redis.0.4.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-redis.0.5.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -321,7 +321,8 @@
                 "url": "https://github.com/WP-API/OAuth1",
                 "reference": "master"
             },
-            "type": "wordpress-plugin"
+            "type": "wordpress-plugin",
+            "time": "2016-06-17 15:19:43"
         },
         {
             "name": "wpackagist-plugin/debug-bar",
