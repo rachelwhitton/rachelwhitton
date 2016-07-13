@@ -50,7 +50,6 @@
   },
   "require-dev": {
     "wpackagist-plugin/debug-bar": "dev-trunk",
-    "wp-api/oauth1": "*",
     "petenelson/wp-rest-api-log": "*"
   },
   "require": {
