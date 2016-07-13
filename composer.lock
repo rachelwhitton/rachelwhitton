@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d2ef4f80e76978297371177aacc8c1b5",
-    "content-hash": "f9c8882df6bf279cdf5e40a8cf9ba61c",
+    "hash": "c542802659b03c54ab9748801e551d77",
+    "content-hash": "18f1d87a79b8e58aba07a0bd885735ff",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "dev-master",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "3c90d491bafa3d0a1bd57a7d001da839a08d2f88"
+                "reference": "a3595c5272a6f247228abb20076ed27321e4aae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/3c90d491bafa3d0a1bd57a7d001da839a08d2f88",
-                "reference": "3c90d491bafa3d0a1bd57a7d001da839a08d2f88",
+                "url": "https://api.github.com/repos/composer/installers/zipball/a3595c5272a6f247228abb20076ed27321e4aae9",
+                "reference": "a3595c5272a6f247228abb20076ed27321e4aae9",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-06-24 07:03:15"
+            "time": "2016-07-05 06:18:20"
         },
         {
             "name": "koodimonni/composer-dropin-installer",
@@ -115,12 +115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
-                "reference": "3ef200266ce8bc237209a32d7ed816826229e861"
+                "reference": "423a5cf9fad155fe6892b25ded77562a53e30ce9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/3ef200266ce8bc237209a32d7ed816826229e861",
-                "reference": "3ef200266ce8bc237209a32d7ed816826229e861",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/423a5cf9fad155fe6892b25ded77562a53e30ce9",
+                "reference": "423a5cf9fad155fe6892b25ded77562a53e30ce9",
                 "shasum": ""
             },
             "require": {
@@ -145,23 +145,24 @@
             "authors": [
                 {
                     "name": "Onni Hakala",
-                    "email": "onni@koodimonni.fi"
+                    "email": "onni@koodimonni.fi",
+                    "role": "Developer"
                 }
             ],
-            "description": "Do what the fuck you want with your composer packages aka. Composer Dropin installer. Install packages or part of packages into custom paths without overwriting existing stuff.",
-            "time": "2016-03-02 19:00:26"
+            "description": "Install packages or a few files from packages into custom paths without overwriting existing stuff.",
+            "time": "2016-07-11 11:22:24"
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "5.5",
+            "version": "5.5.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/5.5"
+                "reference": "tags/5.5.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -233,7 +234,7 @@
         },
         {
             "name": "wpackagist-plugin/wp-cfm",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-cfm/",
@@ -322,7 +323,7 @@
                 "reference": "master"
             },
             "type": "wordpress-plugin",
-            "time": "2016-06-17 15:19:43"
+            "time": "2016-06-27 14:32:48"
         },
         {
             "name": "wpackagist-plugin/debug-bar",
