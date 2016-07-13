@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0c25aed55cdaf8cd22ec3a66e62ca16d",
-    "content-hash": "5654d3b5f5b3fb3799f08fea2948d498",
+    "hash": "e2c58b0c407fd799d8f3c3fa0c887134",
+    "content-hash": "717ce894bb91f703bc0aecdbaf6a847c",
     "packages": [
         {
             "name": "composer/installers",
@@ -335,17 +335,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "petenelson/wp-rest-api-log",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/petenelson/wp-rest-api-log",
-                "reference": "master"
-            },
-            "type": "wordpress-plugin",
-            "time": "2016-07-06 23:57:06"
-        },
         {
             "name": "wpackagist-plugin/debug-bar",
             "version": "dev-trunk",

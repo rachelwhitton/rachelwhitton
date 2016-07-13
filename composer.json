@@ -13,32 +13,6 @@
     }
   ],
   "repositories": {
-    "petenelson/wp-rest-api-log": {
-      "type": "package",
-      "package": {
-        "version": "dev-master",
-        "name": "petenelson/wp-rest-api-log",
-        "type": "wordpress-plugin",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/petenelson/wp-rest-api-log",
-          "reference": "master"
-        }
-      }
-    },
-    "wp-api/oauth1": {
-      "type": "package",
-      "package": {
-        "version": "dev-master",
-        "name": "wp-api/oauth1",
-        "type": "wordpress-plugin",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/wp-api/oauth1",
-          "reference": "master"
-        }
-      }
-    },
     "wpackagist": {
       "type": "composer",
       "url": "https://wpackagist.org"
@@ -49,8 +23,7 @@
     }
   },
   "require-dev": {
-    "wpackagist-plugin/debug-bar": "dev-trunk",
-    "petenelson/wp-rest-api-log": "*"
+    "wpackagist-plugin/debug-bar": "dev-trunk"
   },
   "require": {
     "composer/installers": "^1.0.21",
