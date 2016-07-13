@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c542802659b03c54ab9748801e551d77",
-    "content-hash": "18f1d87a79b8e58aba07a0bd885735ff",
+    "hash": "f0579d88989d366a169a96e493cc173e",
+    "content-hash": "4504f14ddd48f308d3bc8dbdcfacb785",
     "packages": [
         {
             "name": "composer/installers",
@@ -213,16 +213,37 @@
             "homepage": "https://wordpress.org/plugins/rest-api/"
         },
         {
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.3.1",
+            "name": "wpackagist-plugin/solr-power",
+            "version": "dev-trunk",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.3.1"
+                "url": "https://plugins.svn.wordpress.org/solr-power/",
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/solr-power.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/solr-power/",
+            "time": "2016-01-06 18:40:04"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "3.3.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/3.3.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -323,7 +344,7 @@
                 "reference": "master"
             },
             "type": "wordpress-plugin",
-            "time": "2016-06-27 14:32:48"
+            "time": "2016-07-13 20:14:36"
         },
         {
             "name": "wpackagist-plugin/debug-bar",
@@ -345,33 +366,11 @@
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/debug-bar/",
             "time": "2016-04-30 09:21:46"
-        },
-        {
-            "name": "wpackagist-plugin/solr-power",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/solr-power/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/solr-power.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/solr-power/",
-            "time": "2016-01-06 18:40:04"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wpackagist-plugin/solr-power": 20,
         "wpackagist-plugin/debug-bar": 20,
         "wp-api/oauth1": 20
     },
