@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0579d88989d366a169a96e493cc173e",
-    "content-hash": "4504f14ddd48f308d3bc8dbdcfacb785",
+    "hash": "075728832180545c74a0720d100eba31",
+    "content-hash": "9d644a7bfdfda064daf518bf4f30bda2",
     "packages": [
         {
             "name": "composer/installers",
@@ -151,6 +151,37 @@
             ],
             "description": "Install packages or a few files from packages into custom paths without overwriting existing stuff.",
             "time": "2016-07-11 11:22:24"
+        },
+        {
+            "name": "wp-api/oauth1",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-api/oauth1.git",
+                "reference": "990591b0fae8e36d9d1f543e1a5b8e7c63e217f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WP-API/OAuth1/zipball/990591b0fae8e36d9d1f543e1a5b8e7c63e217f5",
+                "reference": "990591b0fae8e36d9d1f543e1a5b8e7c63e217f5",
+                "shasum": ""
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "GPL2+"
+            ],
+            "authors": [
+                {
+                    "name": "WP-API Team",
+                    "homepage": "http://wp-api.org/"
+                }
+            ],
+            "description": "OAuth 1.0a Server for WordPress",
+            "support": {
+                "source": "https://github.com/WP-API/OAuth1/tree/master",
+                "issues": "https://github.com/WP-API/OAuth1/issues"
+            },
+            "time": "2016-06-27 06:52:34"
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
@@ -336,17 +367,6 @@
     ],
     "packages-dev": [
         {
-            "name": "wp-api/oauth1",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WP-API/OAuth1",
-                "reference": "master"
-            },
-            "type": "wordpress-plugin",
-            "time": "2016-07-13 20:14:36"
-        },
-        {
             "name": "wpackagist-plugin/debug-bar",
             "version": "dev-trunk",
             "source": {
@@ -371,8 +391,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wpackagist-plugin/debug-bar": 20,
-        "wp-api/oauth1": 20
+        "wpackagist-plugin/debug-bar": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
