@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2c58b0c407fd799d8f3c3fa0c887134",
-    "content-hash": "717ce894bb91f703bc0aecdbaf6a847c",
+    "hash": "3fe2d24798c1fe5d6a845e4334cb6c89",
+    "content-hash": "75d764a45b9b228f32763c94de084cb6",
     "packages": [
         {
             "name": "composer/installers",
@@ -194,15 +194,15 @@
         },
         {
             "name": "wpackagist-plugin/rest-api",
-            "version": "2.0-beta13",
+            "version": "dev-trunk",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/rest-api/",
-                "reference": "tags/2.0-beta13"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/rest-api.2.0-beta13.zip",
+                "url": "https://downloads.wordpress.org/plugin/rest-api.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -210,7 +210,8 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/rest-api/"
+            "homepage": "https://wordpress.org/plugins/rest-api/",
+            "time": "2016-05-25 13:39:20"
         },
         {
             "name": "wpackagist-plugin/solr-power",
@@ -235,15 +236,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.3.4",
+            "version": "3.4.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.3.4"
+                "reference": "tags/3.4.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.4.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -295,15 +296,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-redis",
-            "version": "0.5.0",
+            "version": "dev-trunk",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-redis/",
-                "reference": "tags/0.5.0"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-redis.0.5.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-redis.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -311,19 +312,20 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-redis/"
+            "homepage": "https://wordpress.org/plugins/wp-redis/",
+            "time": "2016-06-30 13:02:54"
         },
         {
             "name": "wpackagist-theme/twentysixteen",
-            "version": "1.2",
+            "version": "1.3",
             "source": {
                 "type": "svn",
                 "url": "https://themes.svn.wordpress.org/twentysixteen/",
-                "reference": "1.2"
+                "reference": "1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/twentysixteen.1.2.zip",
+                "url": "https://downloads.wordpress.org/theme/twentysixteen.1.3.zip",
                 "reference": null,
                 "shasum": null
             },
