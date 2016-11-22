@@ -16,6 +16,7 @@ use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Testwork\Call\CallCenter;
 use Behat\Testwork\Call\RuntimeCallee;
+use ReflectionMethod;
 
 /**
  * Column-based table transformation.
@@ -24,7 +25,7 @@ use Behat\Testwork\Call\RuntimeCallee;
  */
 final class ColumnBasedTableTransformation extends RuntimeCallee implements SimpleArgumentTransformation
 {
-    const PATTERN_REGEX = '/^table\:[\w\s,]+$/';
+    const PATTERN_REGEX = '/^table\:(?:\*|[[:print:]]+)$/';
 
     /**
      * @var string
@@ -34,7 +35,7 @@ final class ColumnBasedTableTransformation extends RuntimeCallee implements Simp
     /**
      * {@inheritdoc}
      */
-    static public function supportsPattern($pattern)
+    static public function supportsPatternAndMethod($pattern, ReflectionMethod $method)
     {
         return 1 === preg_match(self::PATTERN_REGEX, $pattern);
     }
@@ -62,7 +63,8 @@ final class ColumnBasedTableTransformation extends RuntimeCallee implements Simp
             return false;
         };
 
-        return $this->pattern === 'table:' . implode(',', $argumentValue->getRow(0));
+        return $this->pattern === 'table:' . implode(',', $argumentValue->getRow(0))
+            || $this->pattern === 'table:*';
     }
 
     /**
@@ -84,6 +86,14 @@ final class ColumnBasedTableTransformation extends RuntimeCallee implements Simp
         }
 
         return $result->getReturn();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority()
+    {
+        return 50;
     }
 
     /**

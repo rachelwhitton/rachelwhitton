@@ -16,6 +16,7 @@ use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Testwork\Call\CallCenter;
 use Behat\Testwork\Call\RuntimeCallee;
+use ReflectionMethod;
 
 /**
  * Table row transformation.
@@ -24,7 +25,7 @@ use Behat\Testwork\Call\RuntimeCallee;
  */
 final class TableRowTransformation extends RuntimeCallee implements SimpleArgumentTransformation
 {
-    const PATTERN_REGEX = '/^row\:[\w\s,]+$/';
+    const PATTERN_REGEX = '/^row\:[[:print:]]+$/';
 
     /**
      * @var string
@@ -34,7 +35,7 @@ final class TableRowTransformation extends RuntimeCallee implements SimpleArgume
     /**
      * {@inheritdoc}
      */
-    static public function supportsPattern($pattern)
+    static public function supportsPatternAndMethod($pattern, ReflectionMethod $method)
     {
         return 1 === preg_match(self::PATTERN_REGEX, $pattern);
     }
@@ -89,6 +90,14 @@ final class TableRowTransformation extends RuntimeCallee implements SimpleArgume
         }
 
         return $rows;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority()
+    {
+        return 50;
     }
 
     /**

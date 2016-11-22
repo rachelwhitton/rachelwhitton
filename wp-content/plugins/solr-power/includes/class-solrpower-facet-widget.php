@@ -44,7 +44,7 @@ class SolrPower_Facet_Widget extends WP_Widget {
 		?>
 		<p>
 			<label
-				for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( esc_attr( 'Title:' ) ); ?></label>
+				for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'solr-for-wordpress-on-pantheon' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
 			       name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
 			       value="<?php echo esc_attr( $title ); ?>">
@@ -119,13 +119,22 @@ class SolrPower_Facet_Widget extends WP_Widget {
 			echo '<h2>' . esc_html( $facet_nice_name ) . '</h2>';
 			echo '<ul>';
 
+			$facets_facet_name = array();
+			if( isset( $this->facets[ $facet_name ] ) ) {
+				$facets_facet_name = $this->facets[ $facet_name ];
+				if( is_array( $this->facets[ $facet_name ] ) ) {
+					// Decode special characters of facet and store in temporary array
+					$facets_facet_name = array_map( array( __CLASS__, 'htmlspecialchars_decode' ), $this->facets[ $facet_name ] );
+				}
+			}
+
 			foreach ( $values as $name => $count ):
 
 				$nice_name = str_replace( '^^', '', $name );
 				$checked   = '';
 
 				if ( isset( $this->facets[ $facet_name ] )
-				     && in_array( htmlspecialchars_decode( $name ), $this->facets[ $facet_name ] )
+				     && in_array( htmlspecialchars_decode( $name ), $facets_facet_name )
 				) {
 					$checked = checked( true, true, false );
 				}
@@ -207,7 +216,7 @@ class SolrPower_Facet_Widget extends WP_Widget {
 		$solr_options = solr_options();
 
 		if ( array_key_exists( $key, $solr_options )
-		     && false != $solr_options[ $key ]
+		     && false !== $solr_options[ $key ]
 		) {
 			return true;
 		}
@@ -216,12 +225,7 @@ class SolrPower_Facet_Widget extends WP_Widget {
 	}
 
 	function dummy_query() {
-		// For a wildcard search, lets change the parser to lucene.
-		add_filter( 'solr_query', function ( $query ) {
-			$query->addParam( 'defType', 'lucene' );
-
-			return $query;
-		} );
+		add_filter('solr_query',array(SolrPower_Api::get_instance(),'dismax_query'),10,2);
 		global $wp_query;
 		$query = new WP_Query();
 		if ( ! $wp_query->get( 's' ) ) {
@@ -229,6 +233,17 @@ class SolrPower_Facet_Widget extends WP_Widget {
 			$query->get_posts();
 		}
 
+	}
+
+	/**
+	 * Callback for array_map to decode html special characters
+	 *
+	 * @param $facet
+	 *
+	 * @return string
+	 */
+	function htmlspecialchars_decode( $facet ){
+		return htmlspecialchars_decode( $facet, ENT_QUOTES );
 	}
 }
 

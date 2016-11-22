@@ -34,6 +34,7 @@ class Command
     private $processTitle;
     private $aliases = array();
     private $definition;
+    private $public = true;
     private $help;
     private $description;
     private $ignoreValidationErrors = false;
@@ -447,6 +448,26 @@ class Command
     }
 
     /**
+     * @param bool $public Whether the command should be publicly shown or not.
+     * 
+     * @return Command The current instance
+     */
+    public function setPublic($public)
+    {
+        $this->public = (bool) $public;
+
+        return $this;
+    }
+
+    /**
+     * @return bool Whether the command should be publicly shown or not.
+     */
+    public function isPublic()
+    {
+        return $this->public;
+    }
+
+    /**
      * Sets the description for the command.
      *
      * @param string $description The description for the command
@@ -572,6 +593,8 @@ class Command
      * Add a command usage example.
      *
      * @param string $usage The usage, it'll be prefixed with the command name
+     *
+     * @return Command The current instance
      */
     public function addUsage($usage)
     {

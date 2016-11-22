@@ -4,12 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9
+class ComposerStaticInit158361fd282553f7ebbe6834e968beae
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
@@ -23,6 +23,7 @@ class ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\DomCrawler\\' => 29,
             'Symfony\\Component\\DependencyInjection\\' => 38,
+            'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
@@ -31,6 +32,7 @@ class ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PantheonSystems\\PantheonWordPressUpstreamTests\\Behat\\' => 53,
         ),
@@ -77,6 +79,10 @@ class ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9
         array (
             0 => __DIR__ . '/..' . '/symfony/dependency-injection',
         ),
+        'Symfony\\Component\\Debug\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/debug',
+        ),
         'Symfony\\Component\\CssSelector\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
@@ -96,6 +102,10 @@ class ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9
         'Symfony\\Component\\BrowserKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -180,10 +190,10 @@ class ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit19aed0f74c094efa32d89865a9e67ba9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit158361fd282553f7ebbe6834e968beae::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit158361fd282553f7ebbe6834e968beae::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit158361fd282553f7ebbe6834e968beae::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit158361fd282553f7ebbe6834e968beae::$classMap;
 
         }, null, ClassLoader::class);
     }
