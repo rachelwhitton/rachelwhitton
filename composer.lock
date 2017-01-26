@@ -167,7 +167,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.4.zip",
-                "reference": null,
+                "reference": "tags/5.5.4",
                 "shasum": null
             },
             "require": {
@@ -187,7 +187,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/pantheon-hud.0.1.0.zip",
-                "reference": null,
+                "reference": "tags/0.1.0",
                 "shasum": null
             },
             "require": {
@@ -207,7 +207,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/rest-api.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
@@ -228,7 +228,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
@@ -248,7 +248,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/solr-power.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
@@ -269,7 +269,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.1.zip",
-                "reference": null,
+                "reference": "tags/4.1",
                 "shasum": null
             },
             "require": {
@@ -289,7 +289,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-cfm.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
@@ -309,7 +309,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.0.6.0.zip",
-                "reference": null,
+                "reference": "tags/0.6.0",
                 "shasum": null
             },
             "require": {
@@ -329,7 +329,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-redis.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
@@ -372,7 +372,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/debug-bar.zip",
-                "reference": null,
+                "reference": "trunk",
                 "shasum": null
             },
             "require": {
