@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2bedc0d46ca00c15db93bb8c4405829",
-    "content-hash": "6287ec4b8ba44790cac89ca5e9ec4dc5",
+    "content-hash": "ecf5608345a7116568c7e119adea2e46",
     "packages": [
         {
             "name": "composer/installers",
@@ -112,7 +111,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-08-13 20:53:52"
+            "time": "2016-08-13T20:53:52+00:00"
         },
         {
             "name": "koodimonni/composer-dropin-installer",
@@ -120,12 +119,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
-                "reference": "423a5cf9fad155fe6892b25ded77562a53e30ce9"
+                "reference": "b09dd53d7bcbe41afec63bd142b17575935e2349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/423a5cf9fad155fe6892b25ded77562a53e30ce9",
-                "reference": "423a5cf9fad155fe6892b25ded77562a53e30ce9",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/b09dd53d7bcbe41afec63bd142b17575935e2349",
+                "reference": "b09dd53d7bcbe41afec63bd142b17575935e2349",
                 "shasum": ""
             },
             "require": {
@@ -155,19 +154,19 @@
                 }
             ],
             "description": "Install packages or a few files from packages into custom paths without overwriting existing stuff.",
-            "time": "2016-07-11 11:22:24"
+            "time": "2017-01-11 19:10:05"
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "5.5.2",
+            "version": "5.5.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/5.5.2"
+                "reference": "tags/5.5.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -216,11 +215,11 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/rest-api/",
-            "time": "2016-05-25 13:39:20"
+            "time": "2016-10-19T15:05:29+00:00"
         },
         {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",
-            "version": "1.9.5",
+            "version": "1.10.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/sendgrid-email-delivery-simplified/",
@@ -257,19 +256,19 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/solr-power/",
-            "time": "2016-01-06 18:40:04"
+            "time": "2016-12-20T22:34:36+00:00"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.4.2",
+            "version": "4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.4.2"
+                "reference": "tags/4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.4.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -301,15 +300,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-native-php-sessions",
-            "version": "0.5",
+            "version": "0.6.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-native-php-sessions/",
-                "reference": "tags/0.5"
+                "reference": "tags/0.6.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.0.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.0.6.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -338,7 +337,7 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-redis/",
-            "time": "2016-06-30 13:02:54"
+            "time": "2016-12-07T14:14:56+00:00"
         },
         {
             "name": "wpackagist-theme/twentysixteen",
@@ -381,7 +380,7 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/debug-bar/",
-            "time": "2016-04-30 09:21:46"
+            "time": "2016-10-19T00:41:56+00:00"
         }
     ],
     "aliases": [],

@@ -32,9 +32,9 @@
     "wpackagist-plugin/rest-api": "*",
     "wpackagist-plugin/solr-power": "*",
     "wpackagist-plugin/pantheon-hud": "0.1.0",
-    "wpackagist-plugin/wp-native-php-sessions": "0.5",
+    "wpackagist-plugin/wp-native-php-sessions": "0.6",
     "wpackagist-plugin/wp-redis": "*",
-    "wpackagist-plugin/wordpress-seo": "3.4.*",
+    "wpackagist-plugin/wordpress-seo": "4.*",
     "wpackagist-plugin/sendgrid-email-delivery-simplified": "1.*",
     "wpackagist-plugin/google-analytics-for-wordpress": "5.*",
     "wpackagist-theme/twentysixteen": "1.*"
