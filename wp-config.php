@@ -189,13 +189,9 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
     $domain = $_SERVER['HTTP_HOST'];
   endif;
 
-  # Define constants for WordPress on Pantheon.
-  define('WP_HOME', 'https://' . $domain);
-  define('WP_SITEURL', 'https://' . $domain);
-
 }
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && (php_sapi_name() != "cli")) {
-  if ($_SERVER['HTTP_HOST'] != $domain || 
+  if ($_SERVER['HTTP_HOST'] != $domain ||
   !isset($_SERVER['HTTP_X_SSL']) || $_SERVER['HTTP_X_SSL'] != 'ON' ) {
     header('HTTP/1.0 301 Moved Permanently');
     header('Location: https://' . $domain . $_SERVER['REQUEST_URI']);
