@@ -174,18 +174,18 @@ if (defined('PANTHEON_ENVIRONMENT')) {
     }
   }
 }
-/*
+
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
   (php_sapi_name() != "cli")) {
     if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev'):
       /** Replace dev.example.com with domain added to the dev environment */
-      /*$domain = 'dev.rachelwhitton.com';
+      $domain = 'dev.rachelwhitton.com';
     elseif ($_ENV['PANTHEON_ENVIRONMENT'] === 'test'):
       /** Replace test.example.com with domain added to the test environment */
-      /*$domain = 'test.rachelwhitton.com';
+      $domain = 'test.rachelwhitton.com';
     elseif ($_ENV['PANTHEON_ENVIRONMENT'] === 'live'):
       /** Replace www.example.com with domain added to the live environment */
-      /*$domain = 'www.rachelwhitton.com';
+      $domain = 'www.rachelwhitton.com';
     else:
       # Fallback value for multidev or other environments.
       # This covers environment-sitename.pantheonsite.io domains
@@ -201,7 +201,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
   }
 }
 
-/* Standardize domains on dev, test, and live
+/*// Standardize domains on dev, test, and live
 if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
   // Standardize Live environment on https://www.rachelwhitton.com
   if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
