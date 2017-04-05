@@ -201,39 +201,6 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
   }
 }
 
-/*// Standardize domains on dev, test, and live
-if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
-  // Standardize Live environment on https://www.rachelwhitton.com
-  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
-    if ($_SERVER['HTTP_HOST'] != 'www.rachelwhitton.com' ||
-        !isset($_SERVER['HTTP_X_SSL']) ||
-        $_SERVER['HTTP_X_SSL'] != 'ON' ) {
-      header('HTTP/1.0 301 Moved Permanently');
-      header('Location: https://www.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-      exit();
-    }
-  }
-  // Standardize Test environment on https://test.rachelwhitton.com
-  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
-    if ($_SERVER['HTTP_HOST'] != 'test.rachelwhitton.com' ||
-        !isset($_SERVER['HTTP_X_SSL']) ||
-        $_SERVER['HTTP_X_SSL'] != 'ON' ) {
-      header('HTTP/1.0 301 Moved Permanently');
-      header('Location: https://test.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-      exit();
-    }
-  }
-  // Standardize Dev environment on https://dev.rachelwhitton.com
-  if ($_SERVER['PANTHEON_ENVIRONMENT'] === 'dev') {
-    if ($_SERVER['HTTP_HOST'] != 'dev.rachelwhitton.com' ||
-        !isset($_SERVER['HTTP_X_SSL']) ||
-        $_SERVER['HTTP_X_SSL'] != 'ON' ) {
-      header('HTTP/1.0 301 Moved Permanently');
-      header('Location: https://dev.rachelwhitton.com'. $_SERVER['REQUEST_URI']);
-      exit();
-    }
-  }
-}*/
 // 301 Redirect from /sitemap.xml to /sitemap_index.xml
 if (($_SERVER['REQUEST_URI'] == '/sitemap.xml') ||
     (($_SERVER['REQUEST_URI'] == '/sitemap_index.xml') &&
