@@ -59,5 +59,7 @@ Thumbs.db
 .env
 
 
-!/wp-content/plugins
 /wp-content/plugins/*
+!/wp-content/plugins
+/wp-content/themes/*
+!/wp-content/themes
