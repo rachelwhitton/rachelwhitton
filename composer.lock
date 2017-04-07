@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecf5608345a7116568c7e119adea2e46",
+    "content-hash": "b5e281b1ed34510dc040824de21e9dd7",
     "packages": [
         {
             "name": "composer/installers",
@@ -157,17 +157,38 @@
             "time": "2017-01-11 19:10:05"
         },
         {
-            "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "5.5.4",
+            "name": "wpackagist-plugin/debug-bar",
+            "version": "dev-trunk",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/5.5.4"
+                "url": "https://plugins.svn.wordpress.org/debug-bar/",
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.4.zip",
-                "reference": "tags/5.5.4",
+                "url": "https://downloads.wordpress.org/plugin/debug-bar.zip",
+                "reference": "trunk",
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/debug-bar/",
+            "time": "2016-10-19T00:41:56+00:00"
+        },
+        {
+            "name": "wpackagist-plugin/google-analytics-for-wordpress",
+            "version": "6.1.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
+                "reference": "tags/6.1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.6.1.6.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -177,17 +198,37 @@
             "homepage": "https://wordpress.org/plugins/google-analytics-for-wordpress/"
         },
         {
-            "name": "wpackagist-plugin/pantheon-hud",
-            "version": "0.1.0",
+            "name": "wpackagist-plugin/lh-hsts",
+            "version": "1.11",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/pantheon-hud/",
-                "reference": "tags/0.1.0"
+                "url": "https://plugins.svn.wordpress.org/lh-hsts/",
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pantheon-hud.0.1.0.zip",
-                "reference": "tags/0.1.0",
+                "url": "https://downloads.wordpress.org/plugin/lh-hsts.zip?timestamp=1491196208",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/lh-hsts/"
+        },
+        {
+            "name": "wpackagist-plugin/pantheon-hud",
+            "version": "0.1.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/pantheon-hud/",
+                "reference": "tags/0.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/pantheon-hud.0.1.1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -219,7 +260,7 @@
         },
         {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",
-            "version": "1.10.7",
+            "version": "1.10.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/sendgrid-email-delivery-simplified/",
@@ -227,8 +268,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip?timestamp=1491294952",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -260,16 +301,16 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "4.1",
+            "version": "4.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/4.1"
+                "reference": "tags/4.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.1.zip",
-                "reference": "tags/4.1",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.5.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -360,29 +401,7 @@
             "homepage": "https://wordpress.org/themes/twentysixteen/"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "wpackagist-plugin/debug-bar",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/debug-bar/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/debug-bar.zip",
-                "reference": "trunk",
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/debug-bar/",
-            "time": "2016-10-19T00:41:56+00:00"
-        }
-    ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {

@@ -30,13 +30,15 @@
     "koodimonni/composer-dropin-installer": "*",
     "wpackagist-plugin/wp-cfm": "1.*",
     "wpackagist-plugin/rest-api": "*",
+    "wpackagist-plugin/debug-bar": "dev-trunk",
+    "wpackagist-plugin/lh-hsts": "1.*",
     "wpackagist-plugin/solr-power": "*",
-    "wpackagist-plugin/pantheon-hud": "0.1.0",
+    "wpackagist-plugin/pantheon-hud": "0.1.*",
     "wpackagist-plugin/wp-native-php-sessions": "0.6",
     "wpackagist-plugin/wp-redis": "*",
     "wpackagist-plugin/wordpress-seo": "4.*",
     "wpackagist-plugin/sendgrid-email-delivery-simplified": "1.*",
-    "wpackagist-plugin/google-analytics-for-wordpress": "5.*",
+    "wpackagist-plugin/google-analytics-for-wordpress": "6.1.6",
     "wpackagist-theme/twentysixteen": "1.*"
   },
   "extra": {
