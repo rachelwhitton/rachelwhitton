@@ -43,5 +43,6 @@
         "package:wpackagist-plugin/wp-redis:object-cache.php"
       ]
     }
+    
   }
 }

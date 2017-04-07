@@ -166,8 +166,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/debug-bar.zip",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/debug-bar.zip?timestamp=1476834116",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -247,8 +247,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/rest-api.zip",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/rest-api.zip?timestamp=1476885929",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -288,8 +288,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/solr-power.zip",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/solr-power.zip?timestamp=1482273276",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -329,8 +329,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-cfm.zip",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/wp-cfm.zip?timestamp=1467943964",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -350,7 +350,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.0.6.0.zip",
-                "reference": "tags/0.6.0",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -369,8 +369,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-redis.zip",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/wp-redis.zip?timestamp=1487868887",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -378,7 +378,7 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-redis/",
-            "time": "2016-12-07T14:14:56+00:00"
+            "time": "2017-02-23T16:54:47+00:00"
         },
         {
             "name": "wpackagist-theme/twentyseventeen",
