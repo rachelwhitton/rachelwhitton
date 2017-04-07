@@ -1,17 +1,8 @@
 {
-  "name": "rachelwhitton/rachelwhitton",
-  "description":"Personal WP Site used mostly for testing things for docs",
-  "type": "composer",
   "minimum-stability": "dev",
   "config"      : {
     "vendor-dir": "wp-content/vendor"
   },
-  "authors": [
-    {
-      "name": "Rachel",
-      "email": "rachel@pantheon.io"
-    }
-  ],
   "repositories": {
     "wpackagist": {
       "type": "composer",
@@ -39,7 +30,7 @@
     "wpackagist-plugin/wordpress-seo": "4.*",
     "wpackagist-plugin/sendgrid-email-delivery-simplified": "1.*",
     "wpackagist-plugin/google-analytics-for-wordpress": "6.1.6",
-    "wpackagist-theme/twentysixteen": "1.*"
+    "wpackagist-theme/twentyseventeen": "1.*"
   },
   "extra": {
     "installer-paths": {
