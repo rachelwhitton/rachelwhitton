@@ -57,3 +57,7 @@ Thumbs.db
 
 /vendor/
 .env
+
+
+!/wp-content/plugins
+/wp-content/plugins/*
