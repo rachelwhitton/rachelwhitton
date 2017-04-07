@@ -175,6 +175,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   }
 }
 
+
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
   (php_sapi_name() != "cli")) {
     if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev'):
