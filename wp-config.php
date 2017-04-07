@@ -161,7 +161,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
       define( 'WP_DEBUG_DISPLAY', true );
     }
   }
-  // Wordpress debug settings in test and live environments.
+  // Wordpress debug settings in test and live environments
   else {
     // Debugging disabled
     if ( ! defined( 'WP_DEBUG' ) ) {
