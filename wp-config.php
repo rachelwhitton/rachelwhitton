@@ -152,7 +152,7 @@ define('WPLANG', '');
 
 // Debug Settings - true in dev/multidev but false in test and live
 if (defined('PANTHEON_ENVIRONMENT')) {
-  //Wordpress debug settings in development environments.
+  //Wordpress debug settings in development environments
   if (!in_array(PANTHEON_ENVIRONMENT, array('test', 'live'))) {
     // Debugging enabled.
     if ( ! defined( 'WP_DEBUG' ) ) {
